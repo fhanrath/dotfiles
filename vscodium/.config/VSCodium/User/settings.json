@@ -1,0 +1,6 @@
+{
+    "tabnine.experimentalAutoImports": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "editor.fontFamily": "'FuraCode Nerd Font'",
+    "editor.fontSize": 14
+}
