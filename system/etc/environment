@@ -12,7 +12,3 @@
 LIBVA_DRIVER_NAME=radeonsi
 # Intel
 # LIBVA_DRIVER_NAME=i965
-
-# not sure if neccesary:
-# QT_PLUGIN_PATH=/usr/lib/qt/plugins
-# QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins
