@@ -123,6 +123,7 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
+source .config/alias
 source $ZSH/oh-my-zsh.sh
 source /usr/share/nvm/init-nvm.sh
 
