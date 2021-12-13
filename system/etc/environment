@@ -1,0 +1,18 @@
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+
+# Hardware Acceleration
+# NVIDIA
+# LIBVA_DRIVER_NAME=vdpau
+# VDPAU_DRIVER=nvidia
+# AMD
+LIBVA_DRIVER_NAME=radeonsi
+# Intel
+# LIBVA_DRIVER_NAME=i965
+
+# not sure if neccesary:
+# QT_PLUGIN_PATH=/usr/lib/qt/plugins
+# QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt/plugins
