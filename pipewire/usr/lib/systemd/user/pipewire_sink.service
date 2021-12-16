@@ -1,0 +1,19 @@
+[Unit]
+Description=Pipewire script to create virtual sink
+Requires=pipewire.service
+After=pipewire.service
+
+[Service]
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+NoNewPrivileges=yes
+RestrictNamespaces=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+Type=simple
+ExecStart=/usr/bin/pipewire -c /etc/pipewire/virtual-stereo-sink.conf
+Restart=on-failure
+
+
+[Install]
+WantedBy=default.target
