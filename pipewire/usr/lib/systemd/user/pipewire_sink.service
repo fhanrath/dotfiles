@@ -11,9 +11,8 @@ RestrictNamespaces=yes
 SystemCallArchitectures=native
 SystemCallFilter=@system-service
 Type=simple
-ExecStart=/usr/bin/pipewire -c /etc/pipewire/virtual-stereo-sink.conf
+ExecStart=pw-loopback -m '[ FL FR ]' --capture-props='media.class=Audio/Sink node.name=arturia_stereo node.description="Arturia Stereo"' --playback-props='node.target="alsa_output.usb-ARTURIA_AudioFuse-00.analog-surround-71" node.name=arturia_stereo audio.channels=2 audio.position=[ FL FR ] node.description="Arturia Stereo"'
 Restart=on-failure
-
 
 [Install]
 WantedBy=default.target
