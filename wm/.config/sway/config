@@ -57,6 +57,16 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+input type:pointer {
+    pointer_accel 0
+    natural_scroll enabled
+}
+
 input * {
     xkb_layout "us"
     xkb_variant "altgr-intl"
@@ -222,6 +232,5 @@ bar {
 # Personal settings
 gaps inner 10
 default_border pixel 3
-exec_always fcitx5 -d --replace
 
 include /etc/sway/config.d/*

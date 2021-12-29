@@ -1,3 +1,5 @@
+background_opacity: 0.8
+
 font:
   normal:
     family: FuraCode Nerd Font Mono
