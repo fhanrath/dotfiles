@@ -1,0 +1,1 @@
+cp .config/sway/config ~/.config/sway/config
