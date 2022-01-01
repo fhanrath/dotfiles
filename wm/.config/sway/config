@@ -232,5 +232,6 @@ bar {
 # Personal settings
 gaps inner 10
 default_border pixel 3
+font FuraCode Retina 11
 
 include /etc/sway/config.d/*
