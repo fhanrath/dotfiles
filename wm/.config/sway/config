@@ -216,27 +216,27 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+    swaybar_command waybar
     }
 }
 
-#[16:37:47] (Channel) 613nm: assign [class="Firefox"] $ws2
-#[16:38:14] (Channel) 613nm: assign [class="TelegramDesktop"] $ws10
+#assign [class="Firefox"] $ws2
+#assign [class="TelegramDesktop"] $ws10
 #for_window [class="Keepassxc"] floating enable
 
 
 # Personal settings
-gaps inner 10
-default_border pixel 3
-font FuraCode Retina 11
+gaps outer 5
+gaps inner 5
+default_border pixel 2
+titlebar_border_thickness 2
+font FuraCode Retina 11px
+
+## Window decoration
+# class                 border  backgr. text    indicator child_border
+client.focused          #7aa2f7 #414868 #c0caf5 #7dcfff   #7aa2f7
+client.focused_inactive #7aa2f7 #414868 #c0caf5 #7dcfff   #7aa2f7
+client.unfocused        #414868 #24283b #a9b1d6 #7dcfff   #414868
+client.urgent           #e0af68 #e0af68 #1d202f #7dcfff   #e0af68
 
 include /etc/sway/config.d/*

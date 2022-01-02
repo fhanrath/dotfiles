@@ -1,5 +1,5 @@
 {
-    "position": "bottom", 
+    "position": "top", 
     "height": 30,
     "modules-left": ["sway/workspaces"],
     "modules-right": ["network", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],

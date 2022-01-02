@@ -2,6 +2,10 @@
 
 my dotfiles.
 
+## TODO
+
+https://github.com/folke/tokyonight.nvim
+
 ## open source used
 
 - Tokyo Night Theme by enkia https://github.com/enkia/tokyo-night-vscode-theme, MIT
