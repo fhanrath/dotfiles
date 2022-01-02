@@ -6,3 +6,4 @@ cp git/.gitconfig ~/.gitconfig
 ./wm/copy_wm_files.sh
 cp Alacritty/.config/alacritty.yml ~/.config/alacritty.yml
 cp vscodium/.config/VSCodium/User/settings.json ~/.config/VSCodium/User/settings.json
+./vscodium/install_extensions.sh

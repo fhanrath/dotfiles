@@ -229,6 +229,11 @@ bar {
     }
 }
 
+#[16:37:47] (Channel) 613nm: assign [class="Firefox"] $ws2
+#[16:38:14] (Channel) 613nm: assign [class="TelegramDesktop"] $ws10
+#for_window [class="Keepassxc"] floating enable
+
+
 # Personal settings
 gaps inner 10
 default_border pixel 3

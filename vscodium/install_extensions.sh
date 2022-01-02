@@ -1,0 +1,10 @@
+vscodium --install-extension enkia.tokyo-night
+vscodium --install-extension adpyke.codesnap
+vscodium --install-extension serayuzgur.crates
+vscodium --install-extension dbaeumer.vscode-eslint
+vscodium --install-extension llvm-vs-code-extensions.vscode-clangd
+vscodium --install-extension james-yu.latex-workshop
+vscodium --install-extension yzhang.markdown-all-in-one
+vscodium --install-extension esbenp.prettier-vscode
+vscodium --install-extension matklad.rust-analyzer
+vscodium --install-extension ms-python.python
