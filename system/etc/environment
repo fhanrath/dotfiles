@@ -12,3 +12,6 @@
 LIBVA_DRIVER_NAME=radeonsi
 # Intel
 # LIBVA_DRIVER_NAME=i965
+
+# git
+GIT_EDITOR=vim

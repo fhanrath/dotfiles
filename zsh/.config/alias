@@ -2,6 +2,15 @@ alias vim=nvim
 alias vi=nvim
 # alias vf='nvim $(fzf)'
 
+# screenshot/screencasting
+alias screens=grim -g "$(slurp)"
+alias cscreens=grim -g "$(slurp)" - | wl-copy
+alias screenc=wf-recorder -g "$(slurp)"
+
+# git
+alias gtree="git log --graph --pretty=oneline --abbrev-commit --all"
+alias gtreec="git log --graph --pretty=oneline --abbrev-commit"
+
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'
     unalias -m 'l'
