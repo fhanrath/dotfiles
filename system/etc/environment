@@ -17,4 +17,4 @@ LIBVA_DRIVER_NAME=radeonsi
 GIT_EDITOR=vim
 
 # bat
-BAT_THEME="TwoDark"
+BAT_CONFIG_PATH="~/.config/bat.conf"
