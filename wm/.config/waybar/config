@@ -21,62 +21,135 @@
 	 		"10": []
 	},
          	"format-icons": {
-             		"1": "󰋜",
-             		"2": "󰖟",
-             		"3": "󰠮",
-             		"4": "󰭹",
-             		"5": "󱓷",
-             		"6": "󱇧",
-             		"7": "󰊢",
-             		"8": "󰖲",
-             		"9": "󰕧",
-             		"10": "󰝚"
+             		"1": "",
+             		"2": "",
+             		"3": "",
+             		"4": "",
+             		"5": "",
+             		"6": "",
+             		"7": "",
+             		"8": "",
+             		"9": "",
+             		"10": ""
          }
      },
 	"custom/date": {
-    		"format": "󰸗 {}",
+    		"format": " {}",
 		"interval": 3600,
 		"exec": "/home/loki/bin/waybar-date.sh"
 	},
 	"custom/power": {
-		"format": "󰐥",
+		"format": "",
 		"on-click": "/home/loki/bin/waybar-power.sh"
 	},
 	"clock": {
-		"format": "󰅐 {:%H:%M}",
+		"format": " {:%H:%M}",
         	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         	"format-alt": "{:%Y-%m-%d}"
 	},
 	"battery": {
         	"states": {
-            		"warning": 30,
+            		"warning": 25,
             		"critical": 15,
         	},
         	"format": "{icon} {capacity}%",
-        	"format-charging": "󰂄 {capacity}%",
-        	"format-plugged": "󰂄{capacity}%",
         	"format-alt": "{time} {icon}",
-        	"format-full": "󱈑 {capacity}%",
-        	"format-icons": ["󱊡", "󱊢", "󱊣"]
+        	"format-icons": {
+				"charging": ["", "", "", "", "", "", ""],
+				"default": ["", "", "", "", "", "", "", "", "", ""]
+			},
 	},
 	"network": {
         	"format-wifi": "  {essid}",
-        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
-        	"format-linked": "{ifname} (No IP) ",
-        	"format-disconnected": "󰤮 Disconnected",
+        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": " Disconnected",
         	"format-alt": "{ifname}: {ipaddr}/{cidr}"
 	},
 	"pulseaudio": {
 		"format": "{icon}  {volume}%",
-        	"format-muted": "󰖁 Muted",
+        	"format-muted": "婢 Muted",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
-            "headset": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
             "default": ["", "", ""]
         },
+        "on-click": "pavucontrol"
     }
 }
+// icon stash:  ∞ ♾ ½ ✈ ☽ ☾ ☁ ☀ ☔ ☂ ⌘ ⚙ ☆ ★ ⛧ ✱ ✹ ✓ ✔ ✗ ✘ ⚠  ♂ ♀ ☸ ☢ ☣ ☠ ⚛ ☕ ☯ ☮ ❤ ♡ ♥ 🎧 🕨 🕩 🕪 🎤 🎙  🔇  ⏻ ⏽ ⏼ ⏾ ⚞ ⚟ ▹ 🔋 🪫
+/*
+https://www.nerdfonts.com/cheat-sheet
+          
+       
+ﴅ
+ﴆ
+ﴇ
+ﴈ
+ﴉ
+ﴊ
+ﴋ
+ﴌ
+ﴍ
+ﴎ
+ﴏ
+ﴐ
+      
+ﱉ
+ﱊ
+ﱋ
+ﱌ
+ﱍ
+ﱎ
+
+ 
+  
+ ﳌ 
+    
+ 掠 ﯨ
+ 拉
+臘
+ﮣ
+ﮤ
+⏾ 鈴 零
+
+
+  
+
+  
+ 直 睊
+歷 轢
+
+
+
+
+
+
+
+
+
+
+
+  
+奄 奔 墳 
+ﱜ
+ﱝ
+婢
+ﱛ
+
+ 
+
+
+   
+
+
+
+﵀
+
+
+
+*/
