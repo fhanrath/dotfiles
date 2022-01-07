@@ -8,8 +8,8 @@ alias cscreens=grim -g "$(slurp)" - | wl-copy
 alias screenc=wf-recorder -g "$(slurp)"
 
 # git
-alias gtree="git log --graph --pretty=oneline --abbrev-commit --all"
-alias gtreec="git log --graph --pretty=oneline --abbrev-commit"
+alias gtree="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order --all"
+alias gtreec="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order"
 
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'
