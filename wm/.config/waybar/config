@@ -2,7 +2,7 @@
     "position": "top", 
     "height": 30,
     "modules-left": ["sway/workspaces"],
-    "modules-right": ["network", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
+    "modules-right": ["tray", "cpu", "memory", "network", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
     // Modules configuration
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -19,22 +19,32 @@
 	 		"8": [],
 	 		"9": [],
 	 		"10": []
+		},
+		"format-icons": {
+				"1": "",
+				"2": "",
+				"3": "",
+				"4": "",
+				"5": "",
+				"6": "",
+				"7": "",
+				"8": "",
+				"9": "",
+				"10": ""
+		}
 	},
-         	"format-icons": {
-             		"1": "",
-             		"2": "",
-             		"3": "",
-             		"4": "",
-             		"5": "",
-             		"6": "",
-             		"7": "",
-             		"8": "",
-             		"9": "",
-             		"10": ""
-         }
-     },
+	"tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "cpu": {
+        "format": " {usage}% {min_frequency}-{max_frequency} GHz"
+    },
+    "memory": {
+        "format": " {}% {used}/{total} GiB"
+    },
 	"custom/date": {
-    		"format": " {}",
+    	"format": " {}",
 		"interval": 3600,
 		"exec": "/home/loki/bin/waybar-date.sh"
 	},
@@ -64,13 +74,15 @@
         	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
         	"format-linked": "{ifname} (No IP) ",
         	"format-disconnected": " Disconnected",
-        	"format-alt": "{ifname}: {ipaddr}/{cidr}"
+        	"format-alt": "{ifname}: {ipaddr}/{cidr}",
+			"on-click": "nm-applet"
 	},
 	"pulseaudio": {
 		"format": "{icon}  {volume}%",
-        	"format-muted": "婢 Muted",
+        "format-muted": "婢 Muted",
+        "format-bluetooth": "{icon} {volume}%",
         "format-icons": {
-            "headphone": "",
+            "headphone": "",
             "hands-free": "",
             "headset": "",
             "phone": "",
@@ -81,6 +93,14 @@
         "on-click": "pavucontrol"
     }
 }
+/*
+"custom/gpu-usage": {
+    "exec": "radeontop -d - -l 1 | cut -c 32-35 -,
+    "format": "{}%  GPU",
+    "return-type": "",
+    "interval": 4
+}
+*/
 // icon stash:  ∞ ♾ ½ ✈ ☽ ☾ ☁ ☀ ☔ ☂ ⌘ ⚙ ☆ ★ ⛧ ✱ ✹ ✓ ✔ ✗ ✘ ⚠  ♂ ♀ ☸ ☢ ☣ ☠ ⚛ ☕ ☯ ☮ ❤ ♡ ♥ 🎧 🕨 🕩 🕪 🎤 🎙  🔇  ⏻ ⏽ ⏼ ⏾ ⚞ ⚟ ▹ 🔋 🪫
 /*
 https://www.nerdfonts.com/cheat-sheet
@@ -152,4 +172,9 @@ https://www.nerdfonts.com/cheat-sheet
 
 
 
+
+
+
+
+
 */
