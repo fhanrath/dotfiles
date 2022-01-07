@@ -34,7 +34,7 @@ window#waybar {
 	border-radius: 5px;
 }
 
-#custom-date, #clock, #battery, #pulseaudio, #network {
+#custom-date, #clock, #battery, #pulseaudio, #network, #memory, #cpu, #tray {
 	background-color: #24283b;
 	padding: 5px 10px;
 	margin: 5px 0px;
@@ -77,6 +77,19 @@ window#waybar {
 
 #network {
 	color: #f7768e;
+	border-radius: 5px 0px 0px 5px;
+}
+
+#memory {
+	color: #ff9e64;
+}
+
+#cpu {
+	color: #7aa2f7;
+}
+
+#tray {
+	color: #bb9af7;
 	border-radius: 5px 0px 0px 5px;
 }
 
