@@ -77,7 +77,6 @@ window#waybar {
 
 #network {
 	color: #f7768e;
-	border-radius: 5px 0px 0px 5px;
 }
 
 #memory {
@@ -86,11 +85,13 @@ window#waybar {
 
 #cpu {
 	color: #7aa2f7;
+	border-radius: 5px 0px 0px 5px;
 }
 
 #tray {
 	color: #bb9af7;
-	border-radius: 5px 0px 0px 5px;
+	margin-left: 5px;
+	border-radius: 5px 5px 5px 5px;
 }
 
 #pulseaudio {

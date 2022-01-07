@@ -2,9 +2,14 @@
 
 my dotfiles.
 
+## resources
+
+https://www.mankier.com/5/waybar
+
 ## TODO
 
 https://github.com/folke/tokyonight.nvim
+
 
 ## open source used
 

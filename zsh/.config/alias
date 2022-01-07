@@ -1,11 +1,11 @@
-alias vim=nvim
-alias vi=nvim
+alias vim="nvim"
+alias vi="nvim"
 # alias vf='nvim $(fzf)'
 
 # screenshot/screencasting
-alias screens=grim -g "$(slurp)"
-alias cscreens=grim -g "$(slurp)" - | wl-copy
-alias screenc=wf-recorder -g "$(slurp)"
+alias screens="slurp | grim -g -"
+alias cscreens="slurp | grim -g - - | wl-copy"
+alias screenc="slurp | wf-recorder -g -"
 
 # git
 alias gtree="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order --all"
