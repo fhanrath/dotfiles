@@ -95,7 +95,7 @@
 }
 /*
 "custom/gpu-usage": {
-    "exec": "radeontop -d - -l 1 | cut -c 32-35 -,
+    "exec": "$HOME/.config/bin/get_gpu_load.sh",
     "format": "{}%  GPU",
     "return-type": "",
     "interval": 4
