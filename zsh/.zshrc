@@ -123,8 +123,8 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
-source .config/alias
 source $ZSH/oh-my-zsh.sh
+source ~/.config/alias
 source /usr/share/nvm/init-nvm.sh
 
 eval "$(starship init zsh)"

@@ -14,7 +14,7 @@ LIBVA_DRIVER_NAME=radeonsi
 # LIBVA_DRIVER_NAME=i965
 
 # git
-GIT_EDITOR=vim
+GIT_EDITOR=nvim
 
 # bat
-BAT_CONFIG_PATH="~/.config/bat.conf"
+BAT_CONFIG_PATH=~/.config/bat.conf
