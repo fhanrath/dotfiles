@@ -2,7 +2,7 @@
     "position": "top", 
     "height": 30,
     "modules-left": ["sway/workspaces"],
-    "modules-right": ["tray", "cpu", "memory", "network", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
+    "modules-right": ["tray", "cpu", "memory", "network", "custom/displays", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
     // Modules configuration
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -49,6 +49,10 @@
     	"format": " {}",
 		"interval": 3600,
 		"exec": "$HOME/.config/bin/waybar-date.sh"
+	},
+	"custom/displays": {
+    	"format": "",
+		"on-click": "wdisplays"
 	},
 	"custom/power": {
 		"format": "",
@@ -175,6 +179,8 @@ https://www.nerdfonts.com/cheat-sheet
 
 
 
+
+
 
 
 

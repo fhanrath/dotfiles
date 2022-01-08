@@ -34,7 +34,7 @@ window#waybar {
 	border-radius: 5px;
 }
 
-#custom-date, #clock, #battery, #pulseaudio, #network, #memory, #cpu, #tray {
+#custom-date, #custom-displays, #clock, #battery, #pulseaudio, #network, #memory, #cpu, #tray {
 	background-color: #24283b;
 	padding: 5px 10px;
 	margin: 5px 0px;
@@ -42,6 +42,10 @@ window#waybar {
 
 #custom-date {
 	color: #7dcfff;
+}
+
+#custom-displays {
+	color: #9ece6a;
 }
 
 #custom-power {
