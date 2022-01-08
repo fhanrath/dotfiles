@@ -230,7 +230,7 @@ gaps outer 5
 gaps inner 5
 default_border pixel 2
 titlebar_border_thickness 2
-font FuraCode Retina 11px
+font FuraCode Nerd Font
 
 ## Window decoration
 # class                 border  backgr. text    indicator child_border
