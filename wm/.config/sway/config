@@ -220,10 +220,16 @@ bar {
     }
 }
 
+# include monitor setup
+include ~/.config/sway/outputs
+
+# get app id: swaymsg -t get_tree | grep "app_id"
+
 #assign [class="Firefox"] $ws2
 #assign [class="TelegramDesktop"] $ws10
 #for_window [class="Keepassxc"] floating enable
-
+for_window [app_id="wdisplays"] floating enable
+for_window [app_id="nm-connection-editor"] floating enable
 
 # Personal settings
 gaps outer 5
