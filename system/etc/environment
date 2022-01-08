@@ -19,5 +19,5 @@ GIT_EDITOR=nvim
 # bat
 BAT_CONFIG_PATH=~/.config/bat.conf
 
-# sway https://github.com/Alexays/Waybar/issues/21
-XDG_CURRENT_DESKTOP=Unity
+# sway
+XDG_CURRENT_DESKTOP=sway

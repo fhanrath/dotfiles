@@ -34,7 +34,7 @@
 		}
 	},
 	"tray": {
-        "icon-size": 21,
+        "icon-size": 15,
         "spacing": 10
     },
     "cpu": {
@@ -77,7 +77,7 @@
         	"format-linked": "{ifname} (No IP) ",
         	"format-disconnected": " Disconnected",
         	"format-alt": "{ifname}: {ipaddr}/{cidr}",
-			"on-click": "nm-applet"
+			"on-click": "nm-connection-editor"
 	},
 	"pulseaudio": {
 		"format": "{icon}  {volume}%",
