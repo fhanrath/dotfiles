@@ -245,4 +245,7 @@ client.focused_inactive #7aa2f7 #414868 #c0caf5 #7dcfff   #7aa2f7
 client.unfocused        #414868 #24283b #a9b1d6 #7dcfff   #414868
 client.urgent           #e0af68 #e0af68 #1d202f #7dcfff   #e0af68
 
+# start autotiling
+exec autotiling-rs
+
 include /etc/sway/config.d/*

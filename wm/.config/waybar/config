@@ -30,7 +30,7 @@
 				"7": "",
 				"8": "",
 				"9": "",
-				"10": ""
+				"10": ""
 		}
 	},
 	"tray": {
@@ -52,7 +52,7 @@
 	},
 	"custom/displays": {
     	"format": "",
-		"on-click": "wdisplays"
+		"on-click": "wdisplays && sway-save-outputs"
 	},
 	"custom/power": {
 		"format": "",
@@ -183,6 +183,9 @@ https://www.nerdfonts.com/cheat-sheet
 
 
 
+
+
+ﱘ
 
 
 */
