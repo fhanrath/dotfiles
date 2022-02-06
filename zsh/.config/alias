@@ -2,6 +2,9 @@ alias vim="nvim"
 alias vi="nvim"
 # alias vf='nvim $(fzf)'
 
+alias top="btop"
+alias htop="btop"
+
 # screenshot/screencasting
 alias screens="slurp | grim -g -"
 alias cscreens="slurp | grim -g - - | wl-copy"
