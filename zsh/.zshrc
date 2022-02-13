@@ -128,3 +128,5 @@ source ~/.config/alias
 source /usr/share/nvm/init-nvm.sh
 
 eval "$(starship init zsh)"
+
+neofetch
