@@ -1,4 +1,5 @@
 mkdir -p ~/.config/VSCodium/User
+mkdir -p ~/.config/images
 
 cp zsh/.config/alias ~/.config/alias
 cp zsh/.zshrc ~/.zshrc
