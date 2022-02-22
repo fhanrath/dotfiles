@@ -10,4 +10,5 @@ cp bat/.config/bat.conf ~/.config/bat.conf
 cp Alacritty/.config/alacritty.yml ~/.config/alacritty.yml
 cp vscodium/.config/VSCodium/User/settings.json ~/.config/VSCodium/User/settings.json
 cp rofi/.config/config.rasi ~/.config/rofi/config.rasi
+./desktop/patch_desktop_files.sh
 ./vscodium/install_extensions.sh
