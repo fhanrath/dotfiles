@@ -212,6 +212,15 @@ bar {
 # include monitor setup
 include ~/.config/sway/outputs
 
+# theming
+seat seat0 xcursor_theme "Breeze"
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Arc-Dark'
+    gsettings set $gnome-schema cursor-theme 'Breeze'
+    gsettings set $gnome-schema font-name 'FuraCode Nerd Font'
+}
+
 # get app id: swaymsg -t get_tree | grep "app_id"
 
 #assign [class="Firefox"] $ws2
