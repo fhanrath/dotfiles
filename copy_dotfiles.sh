@@ -1,5 +1,6 @@
 mkdir -p ~/.config/VSCodium/User
 mkdir -p ~/.config/images
+mkdir -p ~/.config/rofi
 
 cp zsh/.config/alias ~/.config/alias
 cp zsh/.zshrc ~/.zshrc

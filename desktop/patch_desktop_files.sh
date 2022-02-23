@@ -1,4 +1,7 @@
 #!/bin/sh
+mkdir -p ~/.local/share/applications
+
+
 cp /usr/share/applications/librewolf.desktop ~/.local/share/applications/librewolf.desktop
 cp /usr/share/applications/chromium.desktop ~/.local/share/applications/chromium.desktop
 cp /usr/share/applications/codium.desktop ~/.local/share/applications/codium.desktop
