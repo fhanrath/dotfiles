@@ -2,6 +2,7 @@
 full_path=$(realpath $0)
 dir_path=$(dirname $full_path)
 
+mkdir -p ~/.config/sway
 mkdir -p ~/.config/waybar
 mkdir -p ~/.config/swaynag
 
