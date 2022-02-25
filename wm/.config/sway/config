@@ -15,6 +15,7 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu rofi -show run | xargs swaymsg exec --
+# TODO: rofi -show drun
 
 ### Output configuration
 #
@@ -215,6 +216,7 @@ include ~/.config/sway/outputs
 # theming
 seat seat0 xcursor_theme "Breeze"
 
+set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Arc-Dark'
     gsettings set $gnome-schema cursor-theme 'Breeze'

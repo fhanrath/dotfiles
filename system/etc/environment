@@ -26,3 +26,6 @@ XDG_CURRENT_DESKTOP=sway
 QT_QPA_PLATFORMTHEME="qt5ct"  
 QT_QPA_PLATFORM=wayland
 XCURSOR_THEME=Breeze
+
+# gtk theming
+GTK_THEME="Arc-Dark"

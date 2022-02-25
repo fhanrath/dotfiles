@@ -1,6 +1,9 @@
 mkdir -p ~/.config/VSCodium/User
 mkdir -p ~/.config/images
 mkdir -p ~/.config/rofi
+mkdir -p ~/.config/gtk-3.0
+mkdir -p ~/.config/qt5ct
+
 
 cp zsh/.config/alias ~/.config/alias
 cp zsh/.zshrc ~/.zshrc
@@ -11,5 +14,7 @@ cp bat/.config/bat.conf ~/.config/bat.conf
 cp Alacritty/.config/alacritty.yml ~/.config/alacritty.yml
 cp vscodium/.config/VSCodium/User/settings.json ~/.config/VSCodium/User/settings.json
 cp rofi/.config/config.rasi ~/.config/rofi/config.rasi
+cp gtk/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
+cp qt/.config/qt5ct/qt5ct.conf ~/.config/qt5ct/qt5ct.conf
 ./desktop/patch_desktop_files.sh
 ./vscodium/install_extensions.sh
