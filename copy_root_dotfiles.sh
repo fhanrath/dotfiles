@@ -1,3 +1,5 @@
+mkdir -p /usr/share/backgrounds/fenris
+
 cp pipewire/etc/asound.conf /etc/asound.conf
 ./system/copy_system_files.sh
 ./systemd/copy_systemd_files.sh
