@@ -1,6 +1,7 @@
 # dotfiles
 
 my dotfiles.
+Available on [sourcehut](https://git.sr.ht/~fenris/dotfiles).
 
 ## resources
 
