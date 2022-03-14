@@ -8,6 +8,7 @@ mkdir -p ~/.config/qt5ct
 
 cp zsh/.config/alias ~/.config/alias
 cp zsh/.zshrc ~/.zshrc
+touch ~/.config/local_settings
 cp git/.gitconfig ~/.gitconfig
 cp bat/.config/bat.conf ~/.config/bat.conf
 ./bin/00copy_bin.sh

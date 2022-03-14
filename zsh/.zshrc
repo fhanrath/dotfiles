@@ -125,6 +125,7 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 source ~/.config/alias
+source ~/.config/local_settings
 source /usr/share/nvm/init-nvm.sh
 
 eval "$(starship init zsh)"
