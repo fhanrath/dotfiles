@@ -74,6 +74,12 @@ input type:pointer {
     natural_scroll enabled
 }
 
+#https://www.reddit.com/r/swaywm/comments/ppx6xt/configuring_a_wacom_tablet_where_to_start/
+#224x148
+input "1386:855:Wacom_Intuos_Pro_M_Pen" {
+    map_to_output DP-1
+}
+
 input * {
     xkb_layout "us"
     xkb_variant "altgr-intl"
