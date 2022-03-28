@@ -21,4 +21,3 @@ cp gtk/.config/gtk-4.0/settings.ini ~/.config/gtk-4.0/settings.ini
 cp gtk/.gtkrc-2.0 ~/.gtkrc-2.0
 cp qt/.config/qt5ct/qt5ct.conf ~/.config/qt5ct/qt5ct.conf
 ./desktop/patch_desktop_files.sh
-./vscodium/install_extensions.sh
