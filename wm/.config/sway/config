@@ -238,10 +238,8 @@ for_window [app_id="wdisplays"] floating enable, resize set 1600 800
 for_window [app_id="nm-connection-editor"] floating enable, resize set 1600 800
 
 # Personal settings
-gaps outer 5
 gaps inner 5
-default_border pixel 2
-titlebar_border_thickness 2
+default_border pixel 0
 font FuraCode Nerd Font
 
 ## Window decoration
@@ -250,6 +248,12 @@ client.focused          #7aa2f7 #414868 #c0caf5 #7dcfff   #7aa2f7
 client.focused_inactive #7aa2f7 #414868 #c0caf5 #7dcfff   #7aa2f7
 client.unfocused        #414868 #24283b #a9b1d6 #7dcfff   #414868
 client.urgent           #e0af68 #e0af68 #1d202f #7dcfff   #e0af68
+
+# for sway fork https://github.com/fluix-dev/sway-borders
+# border_images.focused ~/.config/sway/borders/dropShadowDark.png
+# border_images.focused_inactive ~/.config/sway/borders/dropShadowDark.png
+# border_images.unfocused ~/.config/sway/borders/dropShadowDark.png
+# border_images.urgent ~/.config/sway/borders/dropShadowDark.png
 
 # start autotiling
 exec autotiling-rs
