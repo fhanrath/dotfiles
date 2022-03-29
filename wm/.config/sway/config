@@ -239,7 +239,8 @@ for_window [app_id="nm-connection-editor"] floating enable, resize set 1600 800
 
 # Personal settings
 gaps inner 5
-default_border pixel 0
+default_border pixel 1
+titlebar_border_thickness 1
 font FuraCode Nerd Font
 
 ## Window decoration
