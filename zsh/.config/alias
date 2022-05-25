@@ -8,7 +8,6 @@ alias htop="btop"
 # screenshot/screencasting
 alias screens="slurp | grim -g -"
 alias cscreens="slurp | grim -g - - | wl-copy"
-alias screenc="wf-recorder -g - \"$(slurp)\" -f ~/screenshots/mov-$(date + \"%Y-%m-%d--%H-%M-%S.mp4\")" 
 
 # git
 alias gtree="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order --all"
