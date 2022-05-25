@@ -236,11 +236,14 @@ exec_always {
 #for_window [class="Keepassxc"] floating enable
 for_window [app_id="wdisplays"] floating enable, resize set 1600 800
 for_window [app_id="nm-connection-editor"] floating enable, resize set 1600 800
+for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, sticky enable, border none
+for_window [app_id="librewolf" title="^Picture-in-Picture$"] floating enable, sticky enable, border none
 
 # Personal settings
 gaps inner 5
-default_border pixel 1
-titlebar_border_thickness 1
+default_border none
+default_floating_border none
+titlebar_border_thickness 0
 font FuraCode Nerd Font
 
 ## Window decoration
