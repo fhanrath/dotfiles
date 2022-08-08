@@ -128,6 +128,8 @@ source ~/.config/alias
 source ~/.config/local_settings
 source /usr/share/nvm/init-nvm.sh
 
+export PATH="${PATH}:$HOME/.cargo/bin"
+
 eval "$(starship init zsh)"
 
 neofetch
