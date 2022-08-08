@@ -118,6 +118,9 @@ input * {
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
+    # toggle notification center
+    bindsym $mod+Shift+n exec swaync-client -t -sw
+
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 #
@@ -270,5 +273,8 @@ client.urgent           #e0af68 #e0af68 #1d202f #7dcfff   #e0af68
 
 # start autotiling
 exec autotiling-rs
+
+# start notification center
+exec swaync
 
 include /etc/sway/config.d/*

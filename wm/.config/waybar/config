@@ -48,7 +48,8 @@
 	"custom/date": {
     	"format": " {}",
 		"interval": 3600,
-		"exec": "$HOME/.config/bin/waybar-date.sh"
+		"exec": "$HOME/.config/bin/waybar-date.sh",
+		"on-click": "swaync-client -t -sw"
 	},
 	"custom/displays": {
     	"format": "",
