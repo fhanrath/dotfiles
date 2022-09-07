@@ -34,10 +34,14 @@ window#waybar {
 	border-radius: 5px;
 }
 
-#custom-date, #custom-displays, #clock, #battery, #pulseaudio, #network, #memory, #cpu, #tray {
+#custom-mic, #custom-date, #custom-displays, #clock, #battery, #pulseaudio, #network, #memory, #cpu, #tray {
 	background-color: #24283b;
 	padding: 5px 10px;
 	margin: 5px 0px;
+}
+
+#custom-mic {
+	color: #f7768e;
 }
 
 #custom-date {

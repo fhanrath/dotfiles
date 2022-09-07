@@ -2,7 +2,7 @@
     "position": "top", 
     "height": 30,
     "modules-left": ["sway/workspaces"],
-    "modules-right": ["tray", "cpu", "memory", "network", "custom/displays", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
+    "modules-right": ["tray", "cpu", "memory", "network", "custom/displays", "custom/mic", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
     // Modules configuration
 	"sway/workspaces": {
 		"disable-scroll": true,
@@ -45,6 +45,17 @@
         "format": " {}%",
         "format-alt": " {used:0.1f}/{total:0.1f} GiB"
     },
+	"custom/mic": {
+		"format": "{icon} {percentage}%",
+		"interval": 1,
+		"return-type": "json",
+		"format-icons": {
+			"muted": "",
+			"notmuted": "",
+		},
+		"exec": "$HOME/.config/bin/get_volume_in_percent.sh",
+	   	"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+	},
 	"custom/date": {
     	"format": " {}",
 		"interval": 3600,
