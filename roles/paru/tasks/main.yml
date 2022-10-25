@@ -1,0 +1,12 @@
+---
+- name: Clone paru
+  git:
+    repo: https://github.com/Morganamilo/paru
+    dest: "{{ srcdir }}/paru"
+    update: true
+
+- name: build paru
+  command:
+    chdir: "{{ srcdir }}/paru"
+    cmd: "makepkg -sfi --noconfirm"
+    creates: /usr/bin/paru

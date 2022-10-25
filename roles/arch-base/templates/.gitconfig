@@ -1,0 +1,10 @@
+[core]
+  pager = delta
+  editor = nvim
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  side-by-side = true
+  navigate = true
+  syntax-theme = Nord
+  # delta --list-syntax-themes

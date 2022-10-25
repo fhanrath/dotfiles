@@ -1,0 +1,25 @@
+---
+- name: Install packages
+  become: yes
+  pacman:
+    name:
+      - base-devel
+      - ldns # dns tools provides drill
+      - btop
+      - whois
+      - p7zip
+      - gopass
+      - python-pip
+      - tealdeer # rust tldr
+      - ripgrep # rust alternative to grep
+      - git
+      - git-delta
+    state: present
+    update_cache: yes
+  
+- name: gitconfig
+  ansible.buildin.template:
+    src: templates/.gitconfig
+    dest: "/home/{{ user_name }}/.gitconfig"
+    owner: "{{ user_name }}"
+    mode: u+rw,g-w,o-rw

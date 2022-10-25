@@ -1,0 +1,5 @@
+[desktop]
+fenris-pc
+
+[desktop:vars]
+ansible_connection=local

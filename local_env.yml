@@ -1,0 +1,13 @@
+- name: Set up local environment
+  hosts: desktop
+  connection: local
+  roles:
+    - base
+    - git
+    - ssh_client
+    - package_manager
+    - { role: zsh, tags: [ "theme", "shell" ] }
+    - { role: desktop, tags: [ "theme" ] }
+    - redshift
+    - filemanager
+    - helix
