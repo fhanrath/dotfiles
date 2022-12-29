@@ -1,5 +1,12 @@
 [desktop]
 fenris-pc
+fenris-mbp
 
 [desktop:vars]
 ansible_connection=local
+
+[helix]
+fenris-mbp
+
+[arch]
+fenris-pc

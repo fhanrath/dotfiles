@@ -1,15 +1,13 @@
 ---
 # tasks file for helix
 - name: Install packages
-  become: yes
   ansible.builtin.package:
     name:
       - helix
     state: present
-    update_cache: yes
   
 - name: helixconfig
-  ansible.buildin.template:
+  ansible.builtin.template:
     src: templates/config.toml
     dest: "/home/{{ user_name }}/.config/helix/config.toml"
     owner: "{{ user_name }}"
