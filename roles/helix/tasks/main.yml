@@ -9,6 +9,6 @@
 - name: helixconfig
   ansible.builtin.template:
     src: templates/config.toml
-    dest: "/home/{{ user_name }}/.config/helix/config.toml"
+    dest: "$HOME/.config/helix/config.toml"
     owner: "{{ user_name }}"
     mode: u+rw,g-w,o-r
