@@ -1,0 +1,44 @@
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.zsh/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+unsetopt autocd
+bindkey -e
+
+ZSH=~/.zsh
+
+source ~/.zsh/plugins/zsh-config/plugins/command-not-found/command-not-found.plugin.zsh
+source ~/.zsh/plugins/ohmyzsh/plugins/docker/docker.plugin.zsh
+source ~/.zsh/plugins/ohmyzsh/plugins/npm/npm.plugin.zsh
+source ~/.zsh/plugins/ohmyzsh/plugins/sudo/sudo.plugin.zsh
+source ~/.zsh/plugins/ohmyzsh/plugins/rust/rust.plugin.zsh
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#zsh-syntax-highlighting has to be last
+
+# User configuration
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+ZSH_CACHE_DIR=$HOME/.cache/zsh
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir -p $ZSH_CACHE_DIR
+fi
+
+source ~/.config/alias
+source ~/.config/local_settings
+source /usr/share/nvm/init-nvm.sh
+
+export PATH="${PATH}:$HOME/.cargo/bin"
+export EDITOR={{ main_editor }}
+
+eval "$(starship init zsh)"
+
+neofetch
+
+# start sway
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+  exec sway
+fi

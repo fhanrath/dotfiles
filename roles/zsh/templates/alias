@@ -1,0 +1,43 @@
+alias vim="{{ main_editor }}"
+alias vi="{{ main_editor }}"
+# alias vf='nvim $(fzf)'
+
+if [ "$command -v helix" ]; then
+	alias hx='helix'
+fi
+
+if [ "$command -v hx" ]; then
+	alias helix='hx'
+fi
+
+
+if [ "$command -v btop" ]; then
+	alias top="btop"
+	alias htop="btop"
+fi
+
+# screenshot/screencasting
+
+if [ "$command -v slurp" ]; then
+	alias screens="slurp | grim -g -"
+	alias cscreens="slurp | grim -g - - | wl-copy"
+fi
+
+# git
+alias gtree="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order --all"
+alias gtreec="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order"
+
+if [ "$(command -v exa)" ]; then
+    unalias -m 'll'
+    unalias -m 'l'
+    unalias -m 'la'
+    unalias -m 'ls'
+    alias ls='exa -G --color auto --icons -a -s type'
+    alias ll='exa -l --color always --icons -a -s type'
+    alias lt='exa --tree --level=2 --color always --icons' 
+fi
+
+if [ "$(command -v bat)" ]; then
+  unalias -m 'cat'
+  alias cat='bat -pp'
+fi

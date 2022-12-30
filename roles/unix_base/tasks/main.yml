@@ -38,7 +38,7 @@
   become: yes
   user:
     name: "{{ item.username }}"
-    shell: /bin/bash
+    shell: /bin/zsh
     groups: sudo
     append: yes
     # The following two lines set a random password on user creation to allow user login via other means
