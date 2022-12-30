@@ -10,3 +10,7 @@ fenris-mbp
 
 [arch]
 fenris-pc
+venus.fenris.local
+
+[servers]
+venus.fenris.local

@@ -1,0 +1,8 @@
+---
+# tasks file for laptop-server
+
+- name: Ensure system isn't suspended on lid close
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/logind.conf
+    regexp: '^HandleLidSwitch='
+    line: HandleLidSwitch=ignore

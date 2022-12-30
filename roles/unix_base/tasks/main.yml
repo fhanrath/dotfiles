@@ -1,0 +1,73 @@
+---
+# tasks file for unix-base
+- include_vars: users.yml
+
+- name: Ensure no password login
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^PermitRootLogin'
+    line: 'PermitRootLogin no'
+    state: present
+
+- name: wheel group exists
+  become: yes
+  group:
+    name: wheel
+    state: present
+
+- name: Add sudo group
+  when: inventory_hostname in groups['servers']
+  become: yes
+  group:
+    name: sudo
+    state: present
+
+- name: Ensure sudo may sudo
+  become: yes
+  when: inventory_hostname in groups['servers']
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%sudo ALL='
+    line: '%sudo ALL=(ALL:ALL) NOPASSWD:ALL'
+    validate: /usr/sbin/visudo -cf %s
+
+- name: Add admin users
+  when: inventory_hostname in groups['servers']
+  become: yes
+  user:
+    name: "{{ item.username }}"
+    shell: /bin/bash
+    groups: sudo
+    append: yes
+    # The following two lines set a random password on user creation to allow user login via other means
+    password: "{{ lookup('password', '/dev/null chars=ascii_letters,digits,punctuation length=40') | password_hash('sha512') }}"
+    update_password: on_create
+  with_items: "{{ users }}"
+
+- name: Setup SSH authorized keys file
+  when: inventory_hostname in groups['servers']
+  become: yes
+  authorized_key:
+    user: "{{ item.username }}"
+    key: "{{ lookup('file', 'public_keys/{{ item.username }}.pub') }}"
+  with_items: '{{ users }}'
+
+- name: Ensure wheel may sudo
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%wheel ALL='
+    line: '%wheel ALL=(ALL:ALL) ALL'
+    validate: /usr/sbin/visudo -cf %s
+
+- name: Validate the sudoers file before saving
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^%ADMIN ALL='
+    line: '%ADMIN ALL=(ALL) NOPASSWD: ALL'
+    validate: /usr/sbin/visudo -cf %s

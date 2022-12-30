@@ -1,0 +1,5 @@
+- name: Set up Venus
+  hosts: venus.fenris.local
+  roles:
+    - arch_base
+    - laptop_server

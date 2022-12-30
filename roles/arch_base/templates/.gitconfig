@@ -8,3 +8,10 @@
   navigate = true
   syntax-theme = Nord
   # delta --list-syntax-themes
+[user]
+  name = {{ git_user }}
+  email = {{ git_mail }}
+[pager]
+  log = true
+[init]
+  defaultBranch = main
