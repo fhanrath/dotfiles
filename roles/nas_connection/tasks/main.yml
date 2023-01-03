@@ -1,0 +1,33 @@
+---
+# tasks file for nas_connection
+- name: install sshfs
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - sshfs
+    state: present
+
+- name: bin folder exists
+  file:
+    path: "$HOME/bin"
+    state: directory
+    owner: "{{ user_name }}"
+    mode: 0700
+
+- name: connection file
+  ansible.builtin.template:
+    src: templates/connect_to_nas.sh
+    dest: "$HOME/bin/connect_to_nas.sh"
+    owner: "{{ user_name }}"
+    mode: 0750
+
+- name: data folder exists
+  become: true
+  register: fail_me
+  failed_when: "fail_me.msg and \"Errno 17\" not in fail_me.msg"
+  file:
+    path: "/data"
+    state: directory
+    owner: "{{ user_name }}"
+    mode: 0700
