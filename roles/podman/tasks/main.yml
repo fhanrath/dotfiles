@@ -48,7 +48,7 @@
     src: templates/registries.conf 
     dest: /etc/containers/registries.conf
     owner: root
-    mode: u+rw,g-w,o-rw
+    mode: 0664
 
 - name: Enable linger for podman user
   become: true

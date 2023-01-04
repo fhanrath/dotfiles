@@ -1,0 +1,3 @@
+---
+# vars file for syncthing
+data_path: /data/fenris_share/syncthing

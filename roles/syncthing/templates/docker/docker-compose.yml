@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  syncthing:
+    container_name: syncthing
+    image: lscr.io/linuxserver/syncthing:latest
+    hostname: "{{ inventory_hostname }}"
+    ports:
+      - "8384:8384"
+      - "22000:22000"
+      - "21027:21027/udp"
+    environment:
+      TZ: 'Europe/Berlin'
+      PUID: 1000
+      GUID: 1000
+      UMASK_SET: 022
+    volumes:
+      - '{{ data_path }}/config:/config'
+      - '{{ data_path }}/sync:/sync'
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped

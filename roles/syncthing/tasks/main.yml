@@ -1,0 +1,48 @@
+---
+# tasks file for syncthing
+
+- name: create data sync directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ data_path }}/sync
+
+- name: create data config directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ data_path }}/config
+
+- name: home folder
+  become: true
+  file:
+    path: "/home/podman-usr/syncthing"
+    state: directory
+    owner: podman-usr
+    mode: 0770
+
+- name: copy docker compose
+  become: true
+  ansible.builtin.template:
+    src: templates/docker/docker-compose.yml
+    dest: "/home/podman-usr/syncthing/docker-compose.yml"
+    owner: "podman-usr"
+    mode: 0555
+
+- name: copy systemd service
+  become: true
+  ansible.builtin.template:
+    src: templates/systemd/syncthing.service
+    dest: /etc/systemd/system/syncthing_cont.service
+    owner: root
+    mode: 0555
+
+- name: update daemon
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Enable syncthing
+  become: true
+  ansible.builtin.service:
+    name: syncthing_cont
+    enabled: yes
+
+- name: Start syncthing
+  become: true
+  ansible.builtin.service:
+    name: syncthing_cont
+    state: started
