@@ -1,0 +1,6 @@
+packages:
+  - podman
+  - podman-compose
+  - fuse-overlayfs
+  - slirp4netns
+  - aardvark-dns

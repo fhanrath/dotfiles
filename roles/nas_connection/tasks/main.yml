@@ -22,6 +22,12 @@
     owner: "{{ user_name }}"
     mode: 0750
 
+- name: Ensure group "data" exists
+  become: true
+  ansible.builtin.group:
+    name: data
+    state: present
+
 - name: data folder exists
   become: true
   register: fail_me
@@ -29,5 +35,6 @@
   file:
     path: "/data"
     state: directory
+    group: data
     owner: "{{ user_name }}"
-    mode: 0700
+    mode: 0770

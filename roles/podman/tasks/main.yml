@@ -1,0 +1,55 @@
+---
+# tasks file for podman
+- include_vars: packages.yml
+
+- name: Install podman packages
+  become: true
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items: '{{ packages }}'
+
+- name: Add podman user
+  become: true
+  user:
+    name: "podman-usr"
+    groups:
+      - data
+    shell: /usr/bin/nologin
+    append: true
+
+- name: create /etc/subuid file if it doesn't exist
+  become: true
+  file:
+    path: "/etc/subuid"
+    state: touch
+    owner: root
+    group: root
+    modification_time: preserve
+    access_time: preserve
+
+- name: create /etc/subgid file if it doesn't exist
+  become: true
+  file:
+    path: "/etc/subgid"
+    state: touch
+    owner: root
+    group: root
+    modification_time: preserve
+    access_time: preserve
+
+- name: Add subuids and subgids to podman-usr
+  become: true
+  ansible.builtin.command: usermod --add-subuids 100000-165535 --add-subgids 100000-165535 podman-usr
+
+- name: copy registries.conf
+  become: true
+  ansible.builtin.template:
+    src: templates/registries.conf 
+    dest: /etc/containers/registries.conf
+    owner: root
+    mode: u+rw,g-w,o-rw
+
+- name: Enable linger for podman user
+  become: true
+  ansible.builtin.command: loginctl enable-linger podman-usr

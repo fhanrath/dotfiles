@@ -3,3 +3,4 @@
   roles:
     - arch_base
     - laptop_server
+    - podman
