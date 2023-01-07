@@ -7,6 +7,15 @@
 - name: create data config directory if they don't exist
   ansible.builtin.command: mkdir -p {{ data_path }}/config
 
+- name: make syncthing folder accessible
+  ansible.builtin.command: chmod 770 {{ data_path }}
+
+- name: make syncthing folder accessible
+  ansible.builtin.command: chmod 770 {{ data_path }}/sync
+
+- name: make syncthing folder accessible
+  ansible.builtin.command: chmod 770 {{ data_path }}/config
+
 - name: home folder
   become: true
   file:

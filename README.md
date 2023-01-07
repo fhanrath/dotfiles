@@ -54,6 +54,14 @@ have the environment var `EDITOR` set to something.
 
 `$ ansible-vault edit/create host_vars/host/vault`
 
+## run playbook
+
+`$ ansible-playbook -i inventory xxx-playbook.yml`
+
+## generate new role
+
+`$ ansible-galaxy init <rolename>`
+
 ## --
 ```
 cd ~

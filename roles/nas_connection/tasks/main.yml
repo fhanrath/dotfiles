@@ -15,6 +15,50 @@
     owner: "{{ user_name }}"
     mode: 0700
 
+- name: Ensure group "data" exists
+  become: true
+  ansible.builtin.group:
+    name: data
+    state: present
+
+- name: add main user to data group
+  become: true
+  user:
+    name: "{{ user_name }}"
+    groups:
+      - data
+    append: true
+
+- name: get data group id start
+  register: datagroup_id_full
+  ansible.builtin.command: getent group data
+
+- name: debug id
+  ansible.builtin.debug:
+    msg: "{{ datagroup_id_full }}"
+
+- name: temp folder exists
+  file:
+    path: "$HOME/temp"
+    state: directory
+    owner: "{{ user_name }}"
+    mode: 0700
+
+- name: group file
+  ansible.builtin.template:
+    src: templates/groupid
+    dest: "$HOME/temp/groupid"
+    owner: "{{ user_name }}"
+    mode: 0600
+
+- name: get data group id
+  register: datagroup_id
+  ansible.builtin.command: "cut -d: -f3 $HOME/temp/groupid"
+
+- name: debug id 2
+  ansible.builtin.debug:
+    msg: "{{ datagroup_id }}"
+
 - name: connection file
   ansible.builtin.template:
     src: templates/connect_to_nas.sh
@@ -22,16 +66,18 @@
     owner: "{{ user_name }}"
     mode: 0750
 
-- name: Ensure group "data" exists
-  become: true
-  ansible.builtin.group:
-    name: data
+- name: Allow fuse other
+  become: yes
+  ansible.builtin.lineinfile:
+    path: /etc/fuse.conf
+    regexp: '^user_allow_other'
+    line: 'user_allow_other'
     state: present
 
 - name: data folder exists
   become: true
   register: fail_me
-  failed_when: "fail_me.msg and \"Errno 17\" not in fail_me.msg"
+  failed_when: "fail_me.msg and \"Errno 17\" not in fail_me.msg and \"Errno 13\" not in fail_me.msg"
   file:
     path: "/data"
     state: directory
