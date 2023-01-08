@@ -15,7 +15,7 @@ services:
       TZ: 'Europe/Berlin'
       WEBPASSWORD: '{{ pihole_webpassword }}'
     volumes:
-      - '{{ data_path }}/etc-pihole/:/etc/pihole/'
-      - '{{ data_path }}/etc-dnsmasq.d/:/etc/dnsmasq.d/'
-      - '{{ data_path }}/var-log/pihole.log:/var/log/pihole.log'
+      - '{{ pihole_data_path }}/etc-pihole/:/etc/pihole/'
+      - '{{ pihole_data_path }}/etc-dnsmasq.d/:/etc/dnsmasq.d/'
+      - '{{ pihole_data_path }}/var-log/pihole.log:/var/log/pihole.log'
     restart: unless-stopped

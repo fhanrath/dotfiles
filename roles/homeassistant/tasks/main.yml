@@ -1,0 +1,74 @@
+---
+# tasks file for hass
+
+- name: create config directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ hass_data_path }}/config
+
+- name: make hass folder accessible
+  ansible.builtin.command: chmod 770 {{ hass_data_path }}
+
+- name: make config folder accessible
+  ansible.builtin.command: chmod 770 {{ hass_data_path }}/config
+
+- name: Ensure group "data" exists
+  become: true
+  ansible.builtin.group:
+    name: dialout
+    state: present
+
+- name: add main user to dialout and uucp group
+  become: true
+  user:
+    name: podman-usr
+    groups:
+      - dialout
+      - uucp
+    append: true
+
+- name: add root to data group
+  become: true
+  user:
+    name: root
+    groups:
+      - data
+    append: true
+
+- name: home folder
+  become: true
+  file:
+    path: "/home/podman-usr/hass"
+    state: directory
+    owner: podman-usr
+    mode: 0770
+
+- name: copy docker compose
+  become: true
+  ansible.builtin.template:
+    src: templates/docker/docker-compose.yml
+    dest: "/home/podman-usr/hass/docker-compose.yml"
+    owner: podman-usr
+    mode: 0555
+
+- name: copy systemd service
+  become: true
+  ansible.builtin.template:
+    src: templates/systemd/homeassistant.service
+    dest: /etc/systemd/system/homeassistant_cont.service
+    owner: root
+    mode: 0555
+
+- name: update daemon
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Enable homeassistant
+  become: true
+  ansible.builtin.service:
+    name: homeassistant_cont
+    enabled: yes
+
+- name: Start homeassistant
+  become: true
+  ansible.builtin.service:
+    name: homeassistant_cont
+    state: started

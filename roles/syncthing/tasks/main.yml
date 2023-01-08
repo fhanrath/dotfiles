@@ -2,19 +2,19 @@
 # tasks file for syncthing
 
 - name: create data sync directory if they don't exist
-  ansible.builtin.command: mkdir -p {{ data_path }}/sync
+  ansible.builtin.command: mkdir -p {{ syncthing_data_path }}/sync
 
 - name: create data config directory if they don't exist
-  ansible.builtin.command: mkdir -p {{ data_path }}/config
+  ansible.builtin.command: mkdir -p {{ syncthing_data_path }}/config
 
 - name: make syncthing folder accessible
-  ansible.builtin.command: chmod 770 {{ data_path }}
+  ansible.builtin.command: chmod 770 {{ syncthing_data_path }}
 
 - name: make syncthing folder accessible
-  ansible.builtin.command: chmod 770 {{ data_path }}/sync
+  ansible.builtin.command: chmod 770 {{ syncthing_data_path }}/sync
 
 - name: make syncthing folder accessible
-  ansible.builtin.command: chmod 770 {{ data_path }}/config
+  ansible.builtin.command: chmod 770 {{ syncthing_data_path }}/config
 
 - name: home folder
   become: true

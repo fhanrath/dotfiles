@@ -15,7 +15,7 @@ services:
       GUID: 1000
       UMASK_SET: 022
     volumes:
-      - '{{ data_path }}/config:/config'
-      - '{{ data_path }}/sync:/sync'
+      - '{{ syncthing_data_path }}/config:/config'
+      - '{{ syncthing_data_path }}/sync:/sync'
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped

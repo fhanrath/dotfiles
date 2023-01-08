@@ -1,31 +1,31 @@
 ---
 # tasks file for pihole
 - name: create data dnsmasq directory if they don't exist
-  ansible.builtin.command: mkdir -p {{ data_path }}/etc-dnsmasq.d
+  ansible.builtin.command: mkdir -p {{ pihole_data_path }}/etc-dnsmasq.d
 
 - name: create data config directory if they don't exist
-  ansible.builtin.command: mkdir -p {{ data_path }}/etc-pihole
+  ansible.builtin.command: mkdir -p {{ pihole_data_path }}/etc-pihole
 
 - name: create data log directory if they don't exist
-  ansible.builtin.command: mkdir -p {{ data_path }}/var-log
+  ansible.builtin.command: mkdir -p {{ pihole_data_path }}/var-log
 
 - name: make pihole folder accessible
-  ansible.builtin.command: chmod 770 {{ data_path }}
+  ansible.builtin.command: chmod 770 {{ pihole_data_path }}
 
 - name: make dns folder accessible
-  ansible.builtin.command: chmod 770 {{ data_path }}/etc-dnsmasq.d
+  ansible.builtin.command: chmod 770 {{ pihole_data_path }}/etc-dnsmasq.d
 
 - name: make config folder accessible
-  ansible.builtin.command: chmod 770 {{ data_path }}/etc-pihole
+  ansible.builtin.command: chmod 770 {{ pihole_data_path }}/etc-pihole
 
 - name: make log folder accessible
-  ansible.builtin.command: chmod 770 {{ data_path }}/var-log
+  ansible.builtin.command: chmod 770 {{ pihole_data_path }}/var-log
 
 - name: make sure pihole log is a file
-  ansible.builtin.command: touch {{ data_path }}/var-log/pihole.log
+  ansible.builtin.command: touch {{ pihole_data_path }}/var-log/pihole.log
 
 - name: make log file accessible
-  ansible.builtin.command: chmod 660 {{ data_path }}/var-log/pihole.log
+  ansible.builtin.command: chmod 660 {{ pihole_data_path }}/var-log/pihole.log
 
 - name: home folder
   become: true

@@ -1,3 +1,3 @@
 ---
 # vars file for pihole
-data_path: /data/fenris_share/systems/pihole
+pihole_data_path: /data/fenris_share/systems/pihole

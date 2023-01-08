@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  hass:
+    container_name: hass
+    image: homeassistant/home-assistant:latest
+    hostname: "{{ inventory_hostname }}"
+    userns_mode: keep-id
+    group_add: 
+      - keep-groups
+      - nobody
+    ports:
+      - "8123:8123/tcp"
+    environment:
+      TZ: 'Europe/Berlin'
+    volumes:
+      - '{{ hass_data_path }}/config:/config'
+      - /etc/localtime:/etc/localtime:ro
+    devices:
+      - '{{ conbee_device }}:/dev/serial/by-id/conbee'
+    restart: unless-stopped

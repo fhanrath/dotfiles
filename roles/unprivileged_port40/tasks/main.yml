@@ -1,5 +1,13 @@
 ---
 # tasks file for unprivileged_port40
+- name: create sysctl file
+  become: true
+  ansible.builtin.file:
+    path: /etc/sysctl.d/99-sysctl.conf
+    owner: root
+    mode: 0644
+    state: touch
+
 - name: set unprivileged port to 40
   become: true
   ansible.builtin.lineinfile:
