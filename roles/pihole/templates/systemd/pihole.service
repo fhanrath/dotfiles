@@ -1,0 +1,14 @@
+[Unit]
+Description=Pi-Hole
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+User=podman-usr
+ExecStart=/usr/bin/podman-compose -f /home/podman-usr/pihole/docker-compose.yml up -d --remove-orphans
+ExecStop=/usr/bin/podman-compose -f /home/podman-usr/pihole/docker-compose.yml down
+
+[Install]
+WantedBy=multi-user.target

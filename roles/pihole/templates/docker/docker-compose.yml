@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  syncthing:
+    container_name: pihole
+    image: pihole/pihole:latest
+    hostname: "{{ inventory_hostname }}"
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "8180:80/tcp"
+      - "8543:443/tcp"
+    environment:
+      TZ: 'Europe/Berlin'
+      WEBPASSWORD: '{{ pihole_webpassword }}'
+    volumes:
+      - '{{ data_path }}/etc-pihole/:/etc/pihole/'
+      - '{{ data_path }}/etc-dnsmasq.d/:/etc/dnsmasq.d/'
+      - '{{ data_path }}/var-log/pihole.log:/var/log/pihole.log'
+    restart: unless-stopped

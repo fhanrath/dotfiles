@@ -1,0 +1,12 @@
+---
+# tasks file for unprivileged_port40
+- name: set unprivileged port to 40
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/sysctl.d/99-sysctl.conf
+    regexp: '^net.ipv4.ip_unprivileged_port_start='
+    line: net.ipv4.ip_unprivileged_port_start=40
+
+- name: set unprivileged port to 40
+  become: true
+  ansible.builtin.command: sysctl -w net.ipv4.ip_unprivileged_port_start=40

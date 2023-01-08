@@ -1,0 +1,68 @@
+---
+# tasks file for pihole
+- name: create data dnsmasq directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ data_path }}/etc-dnsmasq.d
+
+- name: create data config directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ data_path }}/etc-pihole
+
+- name: create data log directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ data_path }}/var-log
+
+- name: make pihole folder accessible
+  ansible.builtin.command: chmod 770 {{ data_path }}
+
+- name: make dns folder accessible
+  ansible.builtin.command: chmod 770 {{ data_path }}/etc-dnsmasq.d
+
+- name: make config folder accessible
+  ansible.builtin.command: chmod 770 {{ data_path }}/etc-pihole
+
+- name: make log folder accessible
+  ansible.builtin.command: chmod 770 {{ data_path }}/var-log
+
+- name: make sure pihole log is a file
+  ansible.builtin.command: touch {{ data_path }}/var-log/pihole.log
+
+- name: make log file accessible
+  ansible.builtin.command: chmod 660 {{ data_path }}/var-log/pihole.log
+
+- name: home folder
+  become: true
+  file:
+    path: "/home/podman-usr/pihole"
+    state: directory
+    owner: podman-usr
+    mode: 0770
+
+- name: copy docker compose
+  become: true
+  ansible.builtin.template:
+    src: templates/docker/docker-compose.yml
+    dest: "/home/podman-usr/pihole/docker-compose.yml"
+    owner: "podman-usr"
+    mode: 0555
+
+- name: copy systemd service
+  become: true
+  ansible.builtin.template:
+    src: templates/systemd/pihole.service
+    dest: /etc/systemd/system/pihole_cont.service
+    owner: root
+    mode: 0555
+
+- name: update daemon
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Enable pihole
+  become: true
+  ansible.builtin.service:
+    name: pihole_cont
+    enabled: yes
+
+- name: Start pihole
+  become: true
+  ansible.builtin.service:
+    name: pihole_cont
+    state: started
