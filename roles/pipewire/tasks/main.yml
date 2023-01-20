@@ -1,0 +1,120 @@
+---
+# tasks file for pipewire
+- name: Install piewire
+  become: true
+  pacman:
+    name:
+      - pipewire
+      - pipewire-alsa
+      - gst-plugin-pipewire
+      - wireplumber
+      - pipewire-pulse
+      - pipewire-v4l2
+      - helvum
+    state: present
+    update_cache: yes
+
+- name: copy new client config to etc pipewire
+  become: true
+  ansible.builtin.copy:
+    src: /usr/share/pipewire/client.conf
+    dest: /etc/pipewire/client.conf
+    follow: false
+
+- name: copy new pipew-pulse config to etc pipewire
+  become: true
+  ansible.builtin.copy:
+    src: /usr/share/pipewire/pipewire-pulse.conf
+    dest: /etc/pipewire/pipewire-pulse.conf
+    follow: false
+
+- name: copy new pipewire config to etc pipewire
+  become: true
+  ansible.builtin.copy:
+    src: /usr/share/pipewire/pipewire.conf
+    dest: /etc/pipewire/pipewire.conf
+    follow: false
+
+- name: Set default clock rate
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/pipewire/pipewire.conf
+    regexp: '^default.clock.rate'
+    line: 'default.clock.rate = 96000'
+    state: present
+
+- name: Set allowed clock rates
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/pipewire/pipewire.conf
+    regexp: '^default.clock.allowed-rates'
+    line: 'default.clock.allowed-rates = [ 44100 48000 88200 96000 192000 ]'
+    state: present
+
+- name: Set resample quality nr. 1
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/pipewire/client.conf
+    regexp: '^resample.quality'
+    line: 'resample.quality = 10'
+    state: present
+
+- name: Set resample quality nr. 2
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/pipewire/pipewire-pulse.conf
+    regexp: '^resample.quality'
+    line: 'resample.quality = 10'
+    state: present
+
+- name: alsa default pipewire device
+  become: true
+  ansible.builtin.template:
+    src: templates/asound.conf
+    dest: "/etc/asound.conf"
+
+- name: pipewire service
+  become: true
+  ansible.builtin.template:
+    src: templates/pipewire_sink.service
+    dest: /usr/lib/systemd/user/pipewire_sink.service
+
+- name: update daemon
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Enable pipewire
+  ansible.builtin.service:
+    name: pipewire
+    enabled: true
+    scope: user
+
+- name: Enable pipewire
+  ansible.builtin.service:
+    name: pipewire-pulse
+    enabled: true
+    scope: user
+
+- name: Enable pipewire sink
+  ansible.builtin.service:
+    name: pipewire_sink
+    enabled: true
+    scope: user
+
+- name: Start pipewire
+  ansible.builtin.service:
+    name: pipewire
+    state: started
+    scope: user
+
+- name: Start pipewire pulse
+  ansible.builtin.service:
+    name: pipewire-pulse
+    state: started
+    scope: user
+
+- name: Start pipewire sink
+  ansible.builtin.service:
+    name: pipewire_sink
+    state: started
+    scope: user

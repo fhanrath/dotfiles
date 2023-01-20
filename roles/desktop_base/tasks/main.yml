@@ -1,0 +1,25 @@
+---
+# tasks file for desktop_base
+- name: Tap fonts, state present
+  when: ansible_facts['os_family'] == "Darwin"
+  community.general.homebrew_tap:
+    name: homebrew/cask-fonts
+    state: present
+  
+- name: Install fonts
+  when: ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.package:
+    name:
+      - font-fira-mono-nerd-font
+      - font-fira-code-nerd-font
+    state: present
+
+- name: Install fonts
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - otf-firamono-nerd
+      - ttf-firacode-nerd
+    state: present
+

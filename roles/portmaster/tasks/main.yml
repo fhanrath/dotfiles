@@ -1,0 +1,30 @@
+---
+# tasks file for portmaster
+- name: install build deps
+  become: true
+  ansible.builtin.package:
+    name: imagemagick
+    state: present
+  
+- name: clone portmaster
+  git:
+    repo: https://github.com/safing/portmaster-packaging
+    dest: "{{ srcdir }}/portmaster"
+    update: true
+
+- name: install portmaster
+  command:
+    chdir: "{{ srcdir }}/portmaster/linux"
+    cmd: "makepkg -si --noconfirm"
+
+- name: enable portmaster
+  become: true
+  ansible.builtin.service:
+    name: portmaster
+    enabled: true
+  
+- name: start portmaster
+  become: true
+  ansible.builtin.service:
+    name: portmaster
+    status: started

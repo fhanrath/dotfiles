@@ -26,6 +26,8 @@ fi
 # git
 alias gtree="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order --all"
 alias gtreec="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order"
+alias gfetch="git fetch --all --prune"
+alias gpull="git pull --rebase"
 
 if [ "$(command -v exa)" ]; then
     unalias -m 'll'

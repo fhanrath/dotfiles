@@ -1,0 +1,24 @@
+---
+# tasks file for alacritty
+- name: Install alacritty
+  when: ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.package:
+    name:
+      - alacritty
+    state: present
+
+- name: Install zsh
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - alacritty
+    state: present
+
+- name: alias file
+  ansible.builtin.template:
+    src: templates/alacritty.yml
+    dest: "$HOME/.config/alacritty.yml"
+    owner: "{{ user_name }}"
+    mode: 0640
+
