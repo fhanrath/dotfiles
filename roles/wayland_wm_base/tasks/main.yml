@@ -1,0 +1,29 @@
+---
+# tasks file for wayland_wm_base
+- name: Install packages
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - xdg-desktop-portal-wlr
+      - pamixer
+      - pavucontrol
+      - grim
+      - wf-recorder
+      - slurp
+      - ranger
+      - nm-connection-editor
+      - qt5ct
+      - wl-clipboard
+      - wayland
+      - wayland-protocols
+      - glfw-wayland
+      - xorg-xwayland
+      - xorg-xlsclients
+      - egl-wayland
+      - qt5-wayland
+      - qt6-wayland
+    state: present
+
+- name: Install AUR packages
+  ansible.builtin.command: paru -S --noconfirm --needed wl-clipboard-rs rofi-lbonn-wayland wdisplays networkmanager-dmenu-git

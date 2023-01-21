@@ -1,0 +1,15 @@
+---
+# tasks file for sway
+- name: Install packages
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - sway
+      - python-i3ipc
+      - swaylock
+      - swayidle
+    state: present
+
+- name: Install AUR packages
+  ansible.builtin.command: paru -S --noconfirm --needed autotiling-rs-git swaync
