@@ -1,0 +1,26 @@
+---
+# tasks file for mpd
+- name: Install mpd
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - mpd
+    state: present
+
+- name: Install mpd client
+  ansible.builtin.command: cargo install mmtc
+
+- name: mpd config folder exists
+  file:
+    path: "$HOME/.config/mpd"
+    state: directory
+    owner: "{{ user_name }}"
+    mode: 0700
+
+- name: mpdconfig
+  ansible.builtin.template:
+    src: templates/mpd.conf
+    dest: "$HOME/.config/mpd/mpd.conf"
+    owner: "{{ user_name }}"
+    mode: u+rw,g-w,o-r

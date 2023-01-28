@@ -1,0 +1,6 @@
+- name: Set up local environment
+  hosts: fenris-pc
+  connection: local
+  roles:
+    - mpd
+  
