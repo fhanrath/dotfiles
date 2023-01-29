@@ -1,0 +1,19 @@
+---
+# tasks file for bluetooth
+- name: install bluetooth
+  become: true
+  ansible.builtin.package:
+    name:
+      - bluez
+      - bluez-libs
+      - bluez-utils
+    state: present
+
+- name: install bluetooth autoconnect
+  ansible.builtin.command: paru -S --noconfirm --needed bluetooth-autoconnect
+
+- name: Enable bluetooth autoconnect
+  become: true
+  ansible.builtin.service:
+    name: bluetooth-autoconnect
+    enabled: yes

@@ -1,0 +1,4 @@
+---
+# tasks file for wacom
+- name: Install wacom driver
+  ansible.builtin.command: paru -S --noconfirm --needed input-wacom-dkms

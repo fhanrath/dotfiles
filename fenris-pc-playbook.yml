@@ -3,4 +3,6 @@
   connection: local
   roles:
     - mpd
+    - xboxelite2
+    - wacom
   

@@ -1,0 +1,4 @@
+---
+# tasks file for xboxelite2
+- name: Install controller driver
+  ansible.builtin.command: paru -S --noconfirm --needed xpad-noone-dkms xpadneo-dkms
