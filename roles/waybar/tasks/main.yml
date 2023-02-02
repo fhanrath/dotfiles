@@ -28,3 +28,38 @@
     dest: "$HOME/.config/waybar/styles.css"
     owner: "{{ user_name }}"
     mode: u+rw,g-w,o-r
+
+- name: bin folder exists
+  file:
+    path: "$HOME/.config/bin"
+    state: directory
+    owner: "{{ user_name }}"
+    mode: 0700
+
+- name: copy waybar date script
+  ansible.builtin.template:
+    src: templates/waybar-date.sh
+    dest: "$HOME/.config/bin/waybar-date.sh"
+    owner: "{{ user_name }}"
+    mode: u+rwx,g-w
+  
+- name: copy waybar power script
+  ansible.builtin.template:
+    src: templates/waybar-power.sh
+    dest: "$HOME/.config/bin/waybar-power.sh"
+    owner: "{{ user_name }}"
+    mode: u+rwx,g-w
+  
+- name: copy waybar volume script
+  ansible.builtin.template:
+    src: templates/get_volume_in_percent.sh
+    dest: "$HOME/.config/bin/get_volume_in_percent.sh"
+    owner: "{{ user_name }}"
+    mode: u+rwx,g-w
+  
+- name: copy waybar gpu script
+  ansible.builtin.template:
+    src: templates/get_gpu_load.sh
+    dest: "$HOME/.config/bin/get_gpu_load.sh"
+    owner: "{{ user_name }}"
+    mode: u+rwx,g-w

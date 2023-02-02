@@ -14,9 +14,16 @@
 - name: Install AUR packages
   ansible.builtin.command: paru -S --noconfirm --needed autotiling-rs-git swaync
 
+- name: config folder exists
+  file:
+    path: "$HOME/.config/bin"
+    state: directory
+    owner: "{{ user_name }}"
+    mode: 0700
+
 - name: copy sway start script
   ansible.builtin.template:
     src: templates/startsway.sh
-    dest: "$HOME/bin/startsway.sh"
+    dest: "$HOME/.config/bin/startsway.sh"
     owner: "{{ user_name }}"
     mode: u+rwx,g-w
