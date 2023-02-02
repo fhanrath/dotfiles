@@ -13,3 +13,10 @@
 
 - name: Install AUR packages
   ansible.builtin.command: paru -S --noconfirm --needed autotiling-rs-git swaync
+
+- name: copy sway start script
+  ansible.builtin.template:
+    src: templates/startsway.sh
+    dest: "$HOME/bin/startsway.sh"
+    owner: "{{ user_name }}"
+    mode: u+rwx,g-w
