@@ -5,6 +5,13 @@
     name:
       - helix
     state: present
+
+- name: config folder exists
+  file:
+    path: "$HOME/.config/helix"
+    state: directory
+    owner: "{{ user_name }}"
+    mode: 0700
   
 - name: helixconfig
   ansible.builtin.template:

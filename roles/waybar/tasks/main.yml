@@ -1,0 +1,30 @@
+---
+# tasks file for waybar
+- name: Install packages
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - waybar
+    state: present
+
+- name: config folder exists
+  file:
+    path: "$HOME/.config/waybar"
+    state: directory
+    owner: "{{ user_name }}"
+    mode: 0700
+
+- name: waybar config
+  ansible.builtin.template:
+    src: templates/config
+    dest: "$HOME/.config/waybar/config"
+    owner: "{{ user_name }}"
+    mode: u+rw,g-w,o-r
+  
+- name: waybar styles
+  ansible.builtin.template:
+    src: templates/styles.css
+    dest: "$HOME/.config/waybar/styles.css"
+    owner: "{{ user_name }}"
+    mode: u+rw,g-w,o-r

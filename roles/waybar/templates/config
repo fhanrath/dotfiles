@@ -1,0 +1,203 @@
+{
+    "position": "top", 
+    "height": 30,
+    "modules-left": ["sway/workspaces"],
+    "modules-right": ["tray", "cpu", "memory", "network", "custom/displays", "custom/mic", "pulseaudio", "battery", "custom/date", "clock", "custom/power"],
+    // Modules configuration
+	"sway/workspaces": {
+		"disable-scroll": true,
+		"all-outputs": true,
+		"format": "{icon}",
+	 	"persistent_workspaces": {
+	 		"1": [],
+	 		"2": [],
+	 		"3": [],
+	 		"4": [],
+	 		"5": [],
+	 		"6": [],
+	 		"7": [],
+	 		"8": [],
+	 		"9": [],
+	 		"10": []
+		},
+		"format-icons": {
+				"1": "",
+				"2": "",
+				"3": "",
+				"4": "",
+				"5": "",
+				"6": "",
+				"7": "",
+				"8": "",
+				"9": "",
+				"10": ""
+		}
+	},
+	"tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+    "cpu": {
+        "format": " {usage}%",
+        "format-alt": " {min_frequency}-{max_frequency} GHz"
+    },
+    "memory": {
+        "format": " {}%",
+        "format-alt": " {used:0.1f}/{total:0.1f} GiB"
+    },
+	"custom/mic": {
+		"format": "{icon} {percentage}%",
+		"interval": 1,
+		"return-type": "json",
+		"format-icons": {
+			"muted": "",
+			"notmuted": "",
+		},
+		"exec": "$HOME/.config/bin/get_volume_in_percent.sh",
+	   	"on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+	},
+	"custom/date": {
+    	"format": " {}",
+		"interval": 3600,
+		"exec": "$HOME/.config/bin/waybar-date.sh",
+		"on-click": "swaync-client -t -sw"
+	},
+	"custom/displays": {
+    	"format": "",
+		"on-click": "wdisplays && sway-save-outputs"
+	},
+	"custom/power": {
+		"format": "",
+		"on-click": "$HOME/.config/bin/waybar-power.sh"
+	},
+	"clock": {
+		"format": " {:%H:%M}",
+		"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+		"format-alt": "{:%Y-%m-%d}"
+	},
+	"battery": {
+        	"states": {
+            		"warning": 25,
+            		"critical": 15,
+        	},
+        	"format": "{icon} {capacity}%",
+        	"format-alt": "{time} {icon}",
+        	"format-icons": {
+				"charging": ["", "", "", "", "", "", ""],
+				"default": ["", "", "", "", "", "", "", "", "", ""]
+			},
+	},
+	"network": {
+        	"format-wifi": "  {essid}",
+        	"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        	"format-linked": "{ifname} (No IP) ",
+        	"format-disconnected": " Disconnected",
+        	"format-alt": "{ifname}: {ipaddr}/{cidr}",
+			"on-click": "nm-connection-editor"
+	},
+	"pulseaudio": {
+		"format": "{icon}  {volume}%",
+        "format-muted": "婢 Muted",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}
+/*
+"custom/gpu-usage": {
+    "exec": "$HOME/.config/bin/get_gpu_load.sh",
+    "format": "{}%  GPU",
+    "return-type": "",
+    "interval": 4
+}
+*/
+// icon stash:  ∞ ♾ ½ ✈ ☽ ☾ ☁ ☀ ☔ ☂ ⌘ ⚙ ☆ ★ ⛧ ✱ ✹ ✓ ✔ ✗ ✘ ⚠  ♂ ♀ ☸ ☢ ☣ ☠ ⚛ ☕ ☯ ☮ ❤ ♡ ♥ 🎧 🕨 🕩 🕪 🎤 🎙  🔇  ⏻ ⏽ ⏼ ⏾ ⚞ ⚟ ▹ 🔋 🪫
+/*
+https://www.nerdfonts.com/cheat-sheet
+          
+       
+ﴅ
+ﴆ
+ﴇ
+ﴈ
+ﴉ
+ﴊ
+ﴋ
+ﴌ
+ﴍ
+ﴎ
+ﴏ
+ﴐ
+      
+ﱉ
+ﱊ
+ﱋ
+ﱌ
+ﱍ
+ﱎ
+
+ 
+  
+ ﳌ 
+    
+ 掠 ﯨ
+ 拉
+臘
+ﮣ
+ﮤ
+⏾ 鈴 零
+
+
+  
+
+  
+ 直 睊
+歷 轢
+
+
+
+
+
+
+
+
+
+
+
+  
+奄 奔 墳 
+ﱜ
+ﱝ
+婢
+ﱛ
+
+ 
+
+
+   
+
+
+
+﵀
+
+
+
+
+
+
+
+
+
+
+ﱘ
+
+
+*/
