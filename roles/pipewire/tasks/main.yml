@@ -11,6 +11,7 @@
       - pipewire-pulse
       - pipewire-v4l2
       - helvum
+      - easyeffects
     state: present
     update_cache: yes
 
