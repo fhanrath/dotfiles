@@ -31,7 +31,7 @@ source ~/.config/alias
 source ~/.config/local_settings
 source /usr/share/nvm/init-nvm.sh
 
-export PATH="${PATH}:$HOME/.cargo/bin"
+export PATH="${PATH}:$HOME/.cargo/bin:$HOME/.local/bin"
 export EDITOR={{ main_editor }}
 
 eval "$(starship init zsh)"
