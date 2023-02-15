@@ -1,0 +1,47 @@
+---
+# tasks file for matrix
+- name: create data directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ matrix_data_path }}
+
+- name: make data folder accessible
+  ansible.builtin.command: chmod 770 {{ matrix_data_path }}
+
+- name: home folder
+  become: true
+  file:
+    path: "/home/podman-usr/matrix"
+    state: directory
+    owner: podman-usr
+    mode: 0770
+
+- name: copy docker compose
+  become: true
+  ansible.builtin.template:
+    src: templates/docker/docker-compose.yml
+    dest: "/home/podman-usr/matrix/docker-compose.yml"
+    owner: podman-usr
+    mode: 0555
+
+- name: copy systemd service
+  become: true
+  ansible.builtin.template:
+    src: templates/systemd/matrix.service
+    dest: /etc/systemd/system/matrix_cont.service
+    owner: root
+    mode: 0555
+
+- name: update daemon
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Enable matrix
+  become: true
+  ansible.builtin.service:
+    name: matrix_cont
+    enabled: yes
+
+- name: Start matrix
+  become: true
+  ansible.builtin.service:
+    name: matrix_cont
+    state: started
