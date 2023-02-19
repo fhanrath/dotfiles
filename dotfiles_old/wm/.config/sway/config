@@ -127,6 +127,9 @@ input * {
 # Audio
 #
 bindsym $mod+m exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+bindsym $mod+i exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+
+bindsym $mod+o exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-
 #
 # Moving around:
 #
