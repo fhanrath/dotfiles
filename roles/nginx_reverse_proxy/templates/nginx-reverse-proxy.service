@@ -1,0 +1,14 @@
+[Unit]
+Description=Nginx reverse proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+User=nginx-rev-user
+ExecStart=/usr/bin/podman-compose -f /var/lib/nginx-reverse-proxy/docker-compose.yml up -d --remove-orphans
+ExecStop=/usr/bin/podman-compose -f /var/lib/nginx-reverse-proxy/docker-compose.yml down
+
+[Install]
+WantedBy=multi-user.target

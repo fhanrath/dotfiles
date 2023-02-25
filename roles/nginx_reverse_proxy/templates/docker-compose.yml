@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  nginx-reverse:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/lib/nginx-reverse-proxy/conf.d:/etc/nginx/conf.d/
+      - /var/lib/nginx-reverse-proxy/dhparam:/etc/nginx/dhparam
+      - /var/lib/nginx-reverse-proxy/certbot/conf/:/etc/nginx/ssl/:ro
+      - /var/lib/nginx-reverse-proxy/certbot/data:/usr/share/nginx/html/letsencrypt
+  certbot:
+    image: certbot/certbot
+    volumes:
+       - /var/lib/nginx-reverse-proxy/certbot/conf/:/etc/letsencrypt
+       - /var/lib/nginx-reverse-proxy/certbot/logs/:/var/log/letsencrypt
+       - /var/lib/nginx-reverse-proxy/certbot/data:/usr/share/nginx/html/letsencrypt
