@@ -18,6 +18,18 @@ fi
 
 # screenshot/screencasting
 
+function testscreen {
+	aera=$(slurp);
+	sleep 2;
+	grim -c -g $area;
+}
+
+function testscreenc {
+	aera=$(slurp);
+	sleep 2;
+	grim -c -g $area | wl-copy
+}
+
 if [ "$command -v slurp" ]; then
 	alias screens="slurp | grim -g -"
 	alias cscreens="slurp | grim -g - - | wl-copy"
