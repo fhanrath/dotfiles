@@ -35,6 +35,12 @@ if [ "$command -v slurp" ]; then
 	alias cscreens="slurp | grim -g - - | wl-copy"
 fi
 
+# editor
+if [ "$command -v helix" ]; then
+	unalias -m 'hx'
+	alias hx="helix"
+fi
+
 # git
 alias gtree="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order --all"
 alias gtreec="git log --graph --pretty=format:'%C(auto)%h %d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --author-date-order"
@@ -54,4 +60,9 @@ fi
 if [ "$(command -v bat)" ]; then
   unalias -m 'cat'
   alias cat='bat -pp'
+fi
+
+if [ "$(command -v dust)" ]; then
+  unalias -m 'du'
+  alias du='dust'
 fi

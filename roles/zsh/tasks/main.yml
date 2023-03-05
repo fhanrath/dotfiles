@@ -8,6 +8,7 @@
       - neofetch
       - exa
       - bat
+      - dust
       - starship
     state: present
 
