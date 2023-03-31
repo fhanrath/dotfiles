@@ -1,1 +1,4 @@
 theme = "tokyonight"
+
+[editor.soft-wrap]
+enable = true
