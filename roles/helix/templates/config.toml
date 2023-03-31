@@ -1,4 +1,17 @@
 theme = "tokyonight"
 
+[editor]
+bufferline = "multiple"
+lsp.display-inlay-hints = true
+auto-save = true
+color-modes = true
+whitespace.render = "all"
+
 [editor.soft-wrap]
 enable = true
+
+[editor.indent-guides]
+render = true
+
+[editor.statusline]
+right = ["version-control", "diagnostics", "selections", "position", "file-encoding"]
