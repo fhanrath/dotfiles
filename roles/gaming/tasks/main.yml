@@ -1,0 +1,12 @@
+---
+# tasks file for gaming
+- name: Install packages
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - steam
+    state: present
+
+- name: Install AUR packages
+  ansible.builtin.command: paru -S --noconfirm --needed lutris-git heroic-games-launcher-git

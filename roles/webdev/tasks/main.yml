@@ -1,0 +1,45 @@
+---
+# tasks file for webdev
+- name: Install packages
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - steam
+    state: present
+
+- name: Install AUR packages
+  when: not ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.command: paru -S --noconfirm --needed nvm
+
+- name: source nvm
+  when: not ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.command: source /usr/share/nvm/init-nvm.sh
+
+- name: install nvm mac
+  when: ansible_facts['os_family'] == "Darwin"
+  community.general.homebrew_tap:
+    name: homebrew/nvm
+    state: present
+
+- name: make nvm dir
+  when: ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.command: mkdir ~/.nvm
+
+- name: make nvm usr share dir
+  when: ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.command: mkdir -p /usr/share/nvm
+
+- name: copy macos init nvm script
+  when: ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.template:
+    src: templates/init-nvm.sh
+    dest: /usr/share/nvm/init-nvm.sh
+    owner: "{{ user_name }}"
+    mode: u+rwx,g-w,o-r
+
+- name: install stable
+  ansible.builtin.command: nvm install stable
+
+- name: use stable
+  ansible.builtin.command: nvm use stable
