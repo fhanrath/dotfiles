@@ -6,7 +6,7 @@ Wants=network-online.target
 [Service]
 Type=oneshot
 RemainAfterExit=true
-User=root
+User=podman-usr
 ExecStart=/usr/bin/podman-compose -f /home/podman-usr/matrix/docker-compose.yml up -d --remove-orphans
 ExecStop=/usr/bin/podman-compose -f /home/podman-usr/matrix/docker-compose.yml down
 
