@@ -79,6 +79,10 @@ https://www.mankier.com/5/waybar
 
 https://github.com/folke/tokyonight.nvim
 
+## misc
+
+sudo su -l podman-usr -s /bin/bash
+
 
 ## open source used
 https://github.com/gidsi/dotfiles

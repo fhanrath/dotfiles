@@ -1,0 +1,3 @@
+---
+# vars file for gitea
+gitea_data_path: /data/fenris_share/systems/gitea

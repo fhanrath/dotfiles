@@ -1,0 +1,56 @@
+---
+# tasks file for gitea
+- name: create data directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ gitea_data_path }}/data
+
+- name: make gitea folder accessible
+  ansible.builtin.command: chmod 770 {{ gitea_data_path }}
+
+- name: make data folder accessible
+  ansible.builtin.command: chmod 770 {{ gitea_data_path }}/data
+
+- name: create config directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ gitea_data_path }}/config
+
+- name: make config folder accessible
+  ansible.builtin.command: chmod 770 {{ gitea_data_path }}/config
+
+- name: home folder
+  become: true
+  file:
+    path: "/home/podman-usr/gitea"
+    state: directory
+    owner: podman-usr
+    mode: 0770
+
+- name: copy docker compose
+  become: true
+  ansible.builtin.template:
+    src: templates/docker/docker-compose.yml
+    dest: "/home/podman-usr/gitea/docker-compose.yml"
+    owner: podman-usr
+    mode: 0555
+
+- name: copy systemd service
+  become: true
+  ansible.builtin.template:
+    src: templates/systemd/gitea.service
+    dest: /etc/systemd/system/gitea_cont.service
+    owner: root
+    mode: 0555
+
+- name: update daemon
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Enable gitea
+  become: true
+  ansible.builtin.service:
+    name: gitea_cont
+    enabled: yes
+
+- name: Start gitea
+  become: true
+  ansible.builtin.service:
+    name: gitea_cont
+    state: started

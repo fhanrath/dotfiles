@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  postgresql:
+    container_name: postgres
+    image: postgres:14
+    userns_mode: keep-id
+    ports:
+      - "5432:5432"
+    environment:
+      TZ: 'Europe/Berlin'
+      POSTGRES_USER: '{{ postgres_user }}'
+      POSTGRES_PASSWORD: '{{ postgres_password }}'
+      POSTGRES_DB: 'gitea'
+    volumes:
+      - '{{ postgres_data_path }}/data:/var/lib/postgresql/data'
+    restart: unless-stopped

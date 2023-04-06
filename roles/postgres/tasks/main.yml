@@ -1,0 +1,53 @@
+---
+# tasks file for postgres
+- name: create data directory if they don't exist
+  become: true
+  ansible.builtin.command: mkdir -p {{ postgres_data_path }}/data
+
+- name: make data folder accessible
+  become: true
+  ansible.builtin.command: chown -R podman-usr {{ postgres_data_path }}/data
+
+- name: make data folder accessible
+  become: true
+  ansible.builtin.command: chgrp -R podman-usr {{ postgres_data_path }}/data
+
+- name: home folder
+  become: true
+  file:
+    path: "/home/podman-usr/postgres"
+    state: directory
+    owner: podman-usr
+    mode: 0770
+
+- name: copy docker compose
+  become: true
+  ansible.builtin.template:
+    src: templates/docker/docker-compose.yml
+    dest: "/home/podman-usr/postgres/docker-compose.yml"
+    owner: podman-usr
+    mode: 0555
+
+- name: copy systemd service
+  become: true
+  ansible.builtin.template:
+    src: templates/systemd/postgres.service
+    dest: /etc/systemd/system/postgres_cont.service
+    owner: root
+    mode: 0555
+
+- name: update daemon
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Enable postgres
+  become: true
+  ansible.builtin.service:
+    name: postgres_cont
+    enabled: yes
+
+- name: Start postgres
+  become: true
+  ansible.builtin.service:
+    name: postgres_cont
+    state: started
