@@ -1,20 +1,26 @@
 ---
 # tasks file for sway
+- name: Install AUR packages
+  ansible.builtin.command: paru -S --noconfirm --needed swayfx autotiling-rs-git swaync
+
 - name: Install packages
   when: not ansible_facts['os_family'] == "Darwin"
   become: true
   ansible.builtin.package:
     name:
-      - sway
       - python-i3ipc
       - swaylock
       - swayidle
     state: present
 
-- name: Install AUR packages
-  ansible.builtin.command: paru -S --noconfirm --needed autotiling-rs-git swaync
-
 - name: config folder exists
+  file:
+    path: "$HOME/.config/sway"
+    state: directory
+    owner: "{{ user_name }}"
+    mode: 0700
+
+- name: config bin folder exists
   file:
     path: "$HOME/.config/bin"
     state: directory
@@ -27,3 +33,9 @@
     dest: "$HOME/.config/bin/startsway.sh"
     owner: "{{ user_name }}"
     mode: u+rwx,g-w
+
+- name: copy sway config
+  ansible.builtin.template:
+    src: templates/config/sway/config
+    dest: "$HOME/.config/sway/config"
+    mode: u+rw,g-w
