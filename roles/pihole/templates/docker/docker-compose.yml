@@ -14,6 +14,7 @@ services:
     environment:
       TZ: 'Europe/Berlin'
       WEBPASSWORD: '{{ pihole_webpassword }}'
+      FTLCONF_REPLY_ADDR4: '{{ pihole_ipv4 }}'
     volumes:
       - '{{ pihole_data_path }}/etc-pihole/:/etc/pihole/'
       - '{{ pihole_data_path }}/etc-dnsmasq.d/:/etc/dnsmasq.d/'
