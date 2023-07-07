@@ -3,6 +3,16 @@ Role Name
 
 A brief description of the role goes here.
 
+Update Conbee Firmware
+----------------------
+
+- https://deconz.dresden-elektronik.de/deconz-firmware/?C=M;O=D
+- wget https://deconz.dresden-elektronik.de/deconz-firmware/deCONZ_ConBeeII_0x26780700.bin.GCF
+- sudo podman stop homeassistant
+- ll /dev/serial/by-id
+- sudo GCFFlasher_internal -t 60 -d /dev/ttyACM0 -f deCONZ_ConBeeII_0x26780700.bin.GCF
+- sudo podman start homeassistant
+
 Requirements
 ------------
 

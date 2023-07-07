@@ -57,6 +57,9 @@
     owner: root
     mode: 0555
 
+- name: install flashing tool for conbee device
+  ansible.builtin.command: paru -S --noconfirm --needed gcfflasher
+
 - name: update daemon
   become: true
   ansible.builtin.command: systemctl daemon-reload
