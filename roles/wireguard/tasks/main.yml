@@ -1,0 +1,16 @@
+---
+# tasks file for wireguard
+- name: Install fonts
+  when: ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.package:
+    name:
+      - wireguard-tools
+    state: present
+
+- name: Install fonts
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - wireguard-tools
+    state: present
