@@ -12,6 +12,20 @@
 - name: install bluetooth autoconnect
   ansible.builtin.command: paru -S --noconfirm --needed bluetooth-autoconnect
 
+- name: Set controller mode
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/bluetooth/main.conf
+    regexp: '^ControllerMode'
+    line: 'ControllerMode = bredr'
+    state: present
+
+- name: Enable bluetooth
+  become: true
+  ansible.builtin.service:
+    name: bluetooth
+    enabled: yes
+
 - name: Enable bluetooth autoconnect
   become: true
   ansible.builtin.service:
