@@ -1,0 +1,19 @@
+---
+# tasks file for unix_env
+- name: Install packages
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
+  ansible.builtin.package:
+    name:
+      - steam
+    state: present
+
+- name: Install AUR packages
+  when: not ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.command: paru -S --noconfirm --needed joshuto
+
+- name: install mac
+  when: ansible_facts['os_family'] == "Darwin"
+  community.general.homebrew_tap:
+    name: homebrew/joshuto
+    state: present
