@@ -5,7 +5,7 @@
   become: true
   ansible.builtin.package:
     name:
-      - steam
+      - zellij
     state: present
 
 - name: Install AUR packages
@@ -15,5 +15,5 @@
 - name: install mac
   when: ansible_facts['os_family'] == "Darwin"
   community.general.homebrew_tap:
-    name: homebrew/joshuto
+    name: homebrew/joshuto,homebrew/zellij
     state: present
