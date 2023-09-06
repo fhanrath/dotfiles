@@ -1,9 +1,18 @@
 ---
 # tasks file for helix
 - name: Install packages
+  when: not ansible_facts['os_family'] == "Darwin"
+  become: true
   ansible.builtin.package:
     name:
       - helix
+      - rust-analyzer
+    state: present
+
+- name: install mac
+  when: ansible_facts['os_family'] == "Darwin"
+  community.general.homebrew_tap:
+    name: homebrew/helix,homebrew/rust-analyzer
     state: present
 
 - name: config folder exists
