@@ -12,8 +12,9 @@
   when: not ansible_facts['os_family'] == "Darwin"
   ansible.builtin.command: paru -S --noconfirm --needed joshuto
 
+# see https://gist.github.com/davidteren/898f2dcccd42d9f8680ec69a3a5d350e
 - name: install mac
   when: ansible_facts['os_family'] == "Darwin"
   community.general.homebrew_tap:
-    name: homebrew/joshuto,homebrew/zellij
+    name: homebrew/joshuto,homebrew/zellij,homebrew/cask-fonts
     state: present
