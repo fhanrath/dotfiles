@@ -6,7 +6,7 @@
     name:
       - zsh
       - neofetch
-      - exa
+      - eza
       - bat
       - dust
       - starship
@@ -19,7 +19,7 @@
     name:
       - zsh
       - neofetch
-      - exa
+      - eza
       - bat
       - starship
     state: present
