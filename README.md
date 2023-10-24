@@ -90,3 +90,4 @@ https://github.com/gidsi/dotfiles
 - Tokyo Night Theme by enkia https://github.com/enkia/tokyo-night-vscode-theme, MIT
   - Tokyo Night Alacritty Theme by zatchheems https://github.com/zatchheems/tokyo-night-alacritty-theme, MIT
 - Tokyo Night dotfiles by lokesh-krishna https://github.com/lokesh-krishna/dotfiles/tree/main/tokyo-night, MIT
+- https://gitlab.com/jokeyrhyme/dotfiles/-/blob/main/usr/local/bin/dotfiles-sway.sh, MIT

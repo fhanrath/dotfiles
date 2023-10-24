@@ -15,3 +15,6 @@ render = true
 
 [editor.statusline]
 right = ["version-control", "diagnostics", "selections", "position", "file-encoding"]
+
+[editor.file-picker]
+hidden = false
