@@ -256,7 +256,7 @@ exec_always {
 for_window [app_id="wdisplays"] floating enable, resize set 1600 800
 for_window [app_id="nm-connection-editor"] floating enable, resize set 1600 800
 for_window [app_id="firefox" title="^Picture-in-Picture$"] floating enable, sticky enable, border none
-for_window [app_id="librewolf" title="^Picture-in-Picture$"] floating enable, sticky enable, border none
+for_window [app_id="LibreWolf" title="^Picture-in-Picture$"] floating enable, sticky enable, border none
 
 # Personal settings
 gaps inner 5
