@@ -1,0 +1,80 @@
+---
+# tasks file for docker
+- name: Install docker mac
+  when: ansible_facts['os_family'] == "Darwin"
+  ansible.builtin.package:
+    name:
+      - docker
+    state: present
+
+- name: Enable dnf plugins
+  when:
+    - not ansible_facts['os_family'] == "Darwin"
+    - ansible_facts['distribution'] == "Fedora"
+  become: true
+  ansible.builtin.package:
+    name:
+      - dnf-plugins-core
+    state: present
+
+- name: Install docker repo fedora
+  when:
+    - not ansible_facts['os_family'] == "Darwin"
+    - ansible_facts['distribution'] == "Fedora"
+  become: true
+  command:
+    cmd: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+    creates: /etc/yum.repos.d/docker-ce.repo
+
+- name: Install docker fedora
+  when:
+    - not ansible_facts['os_family'] == "Darwin"
+    - ansible_facts['distribution'] == "Fedora"
+  become: true
+  ansible.builtin.package:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+    state: present
+
+- name: Install docker arch
+  when: 
+    - not ansible_facts['os_family'] == "Darwin"
+    - ansible_facts['distribution'] == "Archlinux"
+  become: true
+  ansible.builtin.package:
+    name:
+      - docker
+      - docker-compose
+    state: present
+
+- name: Add docker group
+  become: yes
+  group:
+    name: docker
+    state: present
+
+- name: add user to docker group
+  become: yes
+  user: name={{user_name}}
+        group=docker
+        append=yes
+
+- name: enable ipv6 for docker
+  become: yes
+  ansible.builtin.template:
+    src: templates/docker_daemon.json
+    dest: /etc/docker/daemon.json
+  
+- name: Start docker service
+  become: yes
+  when:
+    - not ansible_facts['os_family'] == "Darwin"
+    - inventory_hostname in groups['servers']
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: true
