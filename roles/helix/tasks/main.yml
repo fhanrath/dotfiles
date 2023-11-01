@@ -1,7 +1,29 @@
 ---
 # tasks file for helix
+- name: Enable repo
+  when:
+    - not ansible_facts['os_family'] == "Darwin"
+    - ansible_facts['distribution'] == "Fedora"
+  become: true
+  command:
+    cmd: dnf copr enable -y varlad/helix
+    creates: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:varlad:helix.repo
+
 - name: Install packages
-  when: not ansible_facts['os_family'] == "Darwin"
+  when:
+    - not ansible_facts['os_family'] == "Darwin"
+    - ansible_facts['distribution'] == "Fedora"
+  become: true
+  ansible.builtin.package:
+    name:
+      - helix
+      - rust-analyzer
+    state: present
+
+- name: Install packages
+  when:
+    - not ansible_facts['os_family'] == "Darwin"
+    - ansible_facts['distribution'] == "Archlinux"
   become: true
   ansible.builtin.package:
     name:

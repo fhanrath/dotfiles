@@ -1,0 +1,8 @@
+- name: Set up Alpha Centauri AB
+  hosts: alphacentauriab.fenris.xyz
+  roles:
+    - helix
+    - unix_base
+    - rust_env
+    - fedora_rust_base
+    - docker

@@ -1,0 +1,6 @@
+---
+# tasks file for rust_env
+- name: Install rustup
+  command: 
+    cmd: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    creates: ~/.cargo/bin/cargo
