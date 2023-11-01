@@ -72,7 +72,6 @@
     state: touch
     owner: "{{ user_name }}"
     mode: u+rw,g-w,o-r
-    creates: "$HOME/.config/local_settings"
 
 - name: alias file
   ansible.builtin.template:
