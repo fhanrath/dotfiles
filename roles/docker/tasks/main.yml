@@ -60,7 +60,7 @@
 - name: add user to docker group
   become: yes
   user: name={{user_name}}
-        group=docker
+        groups=docker
         append=yes
 
 - name: enable ipv6 for docker
