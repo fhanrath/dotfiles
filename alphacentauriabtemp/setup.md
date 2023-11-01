@@ -33,6 +33,9 @@ sudo chown -R fenris /traefik/
 touch /traefik/access.log
 touch /traefik/traefik.log
 
+sudo mkdir -p /wireguard/config
+sudo chown -R fenris /wireguard
+
 sudo vi /etc/docker/daemon.json
 ```
 {
@@ -42,3 +45,14 @@ sudo vi /etc/docker/daemon.json
   "ip6tables": true
 }
 ```
+
+sudo hx /etc/sysctl.d/zzz_allsrcvalid.conf
+```
+net.ipv4.conf.all.src_valid_mark = 1
+net.ipv4.ip_forward = 1
+net.ipv6.conf.all.forwarding = 1
+```
+
+## wireguard show qr codes
+
+docker exec -it wireguard /app/show-peer iPhone,IPad,Mac,Pc

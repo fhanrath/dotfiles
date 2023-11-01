@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+    wireguard:
+        image: lscr.io/linuxserver/wireguard:latest
+        container_name: wireguard
+        cap_add:
+            - NET_ADMIN
+        environment:
+            - PUID=$PUID
+            - PGID=$PGID
+            - TZ=$TZ
+            - INTERNAL_SUBNET=10.42.10.0/24
+            - PEERS=iPhone,IPad,Mac,Pc
+        volumes:
+            - /wireguard/config:/config
+        ports:
+            - 8080:51820/udp
+        restart: unless-stopped
