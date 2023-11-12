@@ -1,2 +1,3 @@
 ---
 # vars file for starcitizen
+srcdir: "/tmp/.src"
