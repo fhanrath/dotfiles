@@ -1,0 +1,17 @@
+---
+# tasks file for starcitizen
+- name: Install opentrack
+  when:
+    - not ansible_facts['os_family'] == "Darwin"
+    - ansible_facts['distribution'] == "Archlinux"
+  ansible.builtin.command: paru -S --noconfirm --needed opentrack
+  
+- name: Custom Desktop file
+  when:
+    - not ansible_facts['os_family'] == "Darwin"
+    - ansible_facts['distribution'] == "Archlinux"
+  ansible.builtin.template:
+    src: templates/opentrack.desktop
+    dest: "$HOME/.local/share/applications/opentrack.desktop"
+    owner: "{{ user_name }}"
+    mode: u+rw,g-w,o-r

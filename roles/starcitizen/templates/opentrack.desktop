@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Opentrack
+Exec=opentrack -platform xcb
+Icon=/usr/share/doc/opentrack/contrib/cute-octopus-vector-material_15-1831.jpg
+Terminal=false
+StartupNotify=true
+
