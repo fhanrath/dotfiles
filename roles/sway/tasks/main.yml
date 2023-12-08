@@ -33,6 +33,13 @@
     dest: "$HOME/.config/bin/startsway.sh"
     owner: "{{ user_name }}"
     mode: u+rwx,g-w
+    
+- name: copy sway lock script
+  ansible.builtin.template:
+    src: templates/lock.sh
+    dest: "$HOME/.config/bin/lock.sh"
+    owner: "{{ user_name }}"
+    mode: u+rwx,g-w
 
 - name: copy sway config
   ansible.builtin.template:
