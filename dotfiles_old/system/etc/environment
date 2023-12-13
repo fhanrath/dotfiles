@@ -14,17 +14,13 @@ LIBVA_DRIVER_NAME=radeonsi
 # LIBVA_DRIVER_NAME=i965
 
 # git
-GIT_EDITOR=nvim
+GIT_EDITOR=helix
 
 # bat
 BAT_CONFIG_PATH=~/.config/bat.conf
 
-# sway
-XDG_CURRENT_DESKTOP=sway
-
 # qt theming
 QT_QPA_PLATFORMTHEME="qt5ct"  
-QT_QPA_PLATFORM=wayland
 XCURSOR_THEME=Breeze
 
 # gtk theming

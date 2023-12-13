@@ -6,7 +6,7 @@ export QT_QPA_PLATFORM=wayland
 export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
-export GDK_BACKENT="wayland,x11"
+export GDK_BACKEND="wayland"
 export MOZ_ENABLE_WAYLAND=1
 
 if command -v dbus-update-activation-environment >/dev/null; then

@@ -1,0 +1,4 @@
+- name: Set up Venus
+  hosts: venus.fenris.local
+  roles:
+    - simple_git
