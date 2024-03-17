@@ -1,0 +1,4 @@
+---
+# vars file for jellyfin
+jellyfin_path: /data/fenris_share/systems/jellyfin
+video_path: /data/fenris_video/video
