@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+    hedgedoc:
+        image: quay.io/hedgedoc/hedgedoc:1.9.9
+        restart: unless-stopped
+        volumes:
+            - /hedgedoc/uploads:/hedgedoc/public/uploads
+            - /hedgedoc/database:/data
+        networks:
+            - proxy
+        environment:
+            CMD_PORT: 80
+            CMD_DB_URL: "sqlite:///data/hedgedoc.db"
+            CMD_DOMAIN: md.fenris.xyz
+            CMD_URL_ADDPORT: false
+            CMD_ALLOW_ANONYMOUS: false
+            CMD_ALLOW_ANONYMOUS_EDITS: false
+            CMD_ALLOW_EMAIL_REGISTER: false
+        labels:
+            - traefik.enable=true
+            - traefik.http.routers.hedgedoc.rule=Host(`md.fenris.xyz`)
+            - traefik.http.routers.hedgedoc.tls=true
+            - traefik.http.routers.hedgedoc.tls.certresolver=myresolver
+            - traefik.http.middlewares.cors-headers.headers.accessControlAllowOriginList=*
+            - traefik.http.middlewares.cors-headers.headers.accessControlAllowHeaders=Origin, X-Requested-With, Content-Type, Accept, Authorization
+            - traefik.http.middlewares.cors-headers.headers.accessControlAllowMethods=GET, POST, PUT, DELETE, OPTIONS
+
+networks:
+    proxy:
+        external: true

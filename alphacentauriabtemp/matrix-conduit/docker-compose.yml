@@ -38,8 +38,8 @@ services:
         labels:
             - traefik.enable=true
             - traefik.http.routers.matrix.rule=Host(`matrix.fenris.xyz`)
-            - traefik.http.routers.mydashboard.tls=true
-            - traefik.http.routers.mydashboard.tls.certresolver=myresolver
+            - traefik.http.routers.matrix.tls=true
+            - traefik.http.routers.matrix.tls.certresolver=myresolver
             - traefik.http.middlewares.cors-headers.headers.accessControlAllowOriginList=*
             - traefik.http.middlewares.cors-headers.headers.accessControlAllowHeaders=Origin, X-Requested-With, Content-Type, Accept, Authorization
             - traefik.http.middlewares.cors-headers.headers.accessControlAllowMethods=GET, POST, PUT, DELETE, OPTIONS
@@ -58,8 +58,8 @@ services:
         labels:
             - traefik.enable=true
             - traefik.http.routers.to-matrix-wellknown.rule=Host(`matrix.fenris.xyz`) && PathPrefix(`/.well-known/matrix`)
-            - traefik.http.routers.mydashboard.tls=true
-            - traefik.http.routers.mydashboard.tls.certresolver=myresolver
+            - traefik.http.routers.to-matrix-wellknown.tls=true
+            - traefik.http.routers.to-matrix-wellknown.tls.certresolver=myresolver
             - traefik.http.middlewares.cors-headers.headers.accessControlAllowOriginList=*
             - traefik.http.middlewares.cors-headers.headers.accessControlAllowHeaders=Origin, X-Requested-With, Content-Type, Accept, Authorization
             - traefik.http.middlewares.cors-headers.headers.accessControlAllowMethods=GET, POST, PUT, DELETE, OPTIONS

@@ -56,3 +56,9 @@ net.ipv6.conf.all.forwarding = 1
 ## wireguard show qr codes
 
 docker exec -it wireguard /app/show-peer iPhone,IPad,Mac,Pc
+
+## setup hedgedoc
+
+sudo mkdir -p /hedgedoc/uploads
+sudo mkdir -p /hedgedoc/database
+sudo chown -R fenris /hedgedoc/
