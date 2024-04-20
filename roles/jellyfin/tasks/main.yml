@@ -1,2 +1,56 @@
 ---
 # tasks file for jellyfin
+- name: create config directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ jellyfin_path }}/config
+
+- name: create cache directory if they don't exist
+  ansible.builtin.command: mkdir -p {{ jellyfin_path }}/cache
+
+- name: make jellyfin folder accessible
+  ansible.builtin.command: chmod 770 {{ jellyfin_path }}
+  
+- name: make config folder accessible
+  ansible.builtin.command: chmod 770 {{ jellyfin_path }}/config
+  
+- name: make cache folder accessible
+  ansible.builtin.command: chmod 770 {{ jellyfin_path }}/cache
+  
+- name: home folder
+  become: true
+  file:
+    path: "/home/podman-usr/jellyfin"
+    state: directory
+    owner: podman-usr
+    mode: 0770
+
+- name: copy docker compose
+  become: true
+  ansible.builtin.template:
+    src: templates/docker-compose.yml
+    dest: "/home/podman-usr/jellyfin/docker-compose.yml"
+    owner: podman-usr
+    mode: 0555
+
+- name: copy systemd service
+  become: true
+  ansible.builtin.template:
+    src: templates/systemd/jellyfin.service
+    dest: /etc/systemd/system/jellyfin_cont.service
+    owner: root
+    mode: 0555
+    
+- name: update daemon
+  become: true
+  ansible.builtin.command: systemctl daemon-reload
+
+- name: Enable jellyfin
+  become: true
+  ansible.builtin.service:
+    name: jellyfin_cont
+    enabled: yes
+
+- name: Start jellyfin
+  become: true
+  ansible.builtin.service:
+    name: jellyfin_cont
+    state: started

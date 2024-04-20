@@ -17,7 +17,10 @@ services:
     restart: 'unless-stopped'
     # Optional - alternative address used for autodiscovery
     environment:
-      - JELLYFIN_PublishedServerUrl=http://jellyfin.fenris.local
+      JELLYFIN_PublishedServerUrl: http://jellyfin.fenris.local
+      PUID: 1000
+      GUID: 1000
+      UMASK_SET: 022
     # Optional - may be necessary for docker healthcheck to pass if running in host network mode
     extra_hosts:
       - 'host.docker.internal:host-gateway'
