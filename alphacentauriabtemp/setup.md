@@ -62,3 +62,7 @@ docker exec -it wireguard /app/show-peer iPhone,IPad,Mac,Pc
 sudo mkdir -p /hedgedoc/uploads
 sudo mkdir -p /hedgedoc/database
 sudo chown -R fenris /hedgedoc/
+
+cd ~/hedgedoc
+sudo docker compose build
+sudo docker compose up -d

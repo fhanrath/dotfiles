@@ -2,7 +2,10 @@ version: '3'
 
 services:
     hedgedoc:
-        image: quay.io/hedgedoc/hedgedoc:1.9.9
+        user: "1000"
+        build:
+            context: .
+            dockerfile: Dockerfile
         restart: unless-stopped
         volumes:
             - /hedgedoc/uploads:/hedgedoc/public/uploads
@@ -10,13 +13,16 @@ services:
         networks:
             - proxy
         environment:
-            CMD_PORT: 80
             CMD_DB_URL: "sqlite:///data/hedgedoc.db"
             CMD_DOMAIN: md.fenris.xyz
             CMD_URL_ADDPORT: false
             CMD_ALLOW_ANONYMOUS: false
             CMD_ALLOW_ANONYMOUS_EDITS: false
             CMD_ALLOW_EMAIL_REGISTER: false
+            CMD_HSTS_ENABLE: true
+            CMD_PROTOCOL_USESSL: true
+            CMD_ALLOW_FREEURL: true
+            CMD_DEFAULT_PERMISSION: limited
         labels:
             - traefik.enable=true
             - traefik.http.routers.hedgedoc.rule=Host(`md.fenris.xyz`)
@@ -25,6 +31,7 @@ services:
             - traefik.http.middlewares.cors-headers.headers.accessControlAllowOriginList=*
             - traefik.http.middlewares.cors-headers.headers.accessControlAllowHeaders=Origin, X-Requested-With, Content-Type, Accept, Authorization
             - traefik.http.middlewares.cors-headers.headers.accessControlAllowMethods=GET, POST, PUT, DELETE, OPTIONS
+            - traefik.http.services.hedgedoc.loadbalancer.server.port=3000
 
 networks:
     proxy:
