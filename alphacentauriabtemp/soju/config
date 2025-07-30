@@ -1,0 +1,4 @@
+db sqlite3 /var/lib/soju/main.db
+listen irc+insecure://0.0.0.0
+listen unix+admin://
+hostname irc.fenris.xyz

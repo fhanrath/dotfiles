@@ -33,6 +33,14 @@ sudo chown -R fenris /traefik/
 touch /traefik/access.log
 touch /traefik/traefik.log
 
+cp traefik/traefik.yml /traefik
+cp traefik/config.yml /traefik
+
+sudo mkdir -p /soju/data/
+sudo chown -R fenris /soju
+
+cp soju/config /soju
+
 sudo mkdir -p /wireguard/config
 sudo chown -R fenris /wireguard
 

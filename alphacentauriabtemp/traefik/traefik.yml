@@ -1,0 +1,41 @@
+api:
+  dashboard: true
+  debug: false
+
+log:
+  level: "INFO"
+  filepath: "/var/log/traefik.log"
+
+accesslog:
+  filepath: "/var/log/traefik-access.log"
+  
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entrypoint:
+          to: websecure
+          scheme: https
+  websecure:
+    address: ":443"
+    http:
+      tls:
+        certResolver: myresolver
+  irc:
+    address: ":2077"
+
+providers:
+  docker:
+    exposedByDefault: false
+    network: proxy
+  file:
+    filename: /config.yml
+
+certificatesResolvers:
+  myresolver:
+    acme:
+      email: fenris@fenris.xyz
+      storage: /letsencrypt/acme.json
+      tlschallenge: true
+      caserver: https://acme-v02.api.letsencrypt.org/directory

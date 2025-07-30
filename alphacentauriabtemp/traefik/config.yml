@@ -1,0 +1,13 @@
+http:
+  middlewares:
+    myauth:
+      basicAuth:
+        users:
+          - "fenfen:$2y$05$wzQuCt2h.bxr7r7IoA/Dd.6jus8OTjnEnv73YEX1cY"
+            
+tls:
+  options:
+    default:
+      # minVersion: VersionTLS12
+      # sniStrict: true
+      alpnProtocols: "h2, http/1.1, acme-tls/1, irc"

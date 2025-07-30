@@ -1,0 +1,23 @@
+# Conduit - Behind Traefik Reverse Proxy
+version: '3'
+
+services:
+    soju-bouncer:
+        image: codeberg.org/emersion/soju:latest
+        restart: unless-stopped
+        volumes:
+            - /soju/config:/soju-config:ro
+            - /soju/data:/var/lib/soju/
+        networks:
+            - proxy
+        labels:
+            - traefik.enable=true
+            - traefik.tcp.routers.soju.entrypoints=irc
+            - traefik.tcp.routers.soju.rule=Host(`irc.fenris.xyz`)
+            - traefik.tcp.routers.soju.tls=true
+            - traefik.tcp.routers.soju.tls.certresolver=myresolver
+            - "traefik.tcp.services.soju.loadbalancer.server.port=6697"
+
+networks:
+    proxy:
+        external: true

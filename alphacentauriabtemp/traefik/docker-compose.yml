@@ -12,34 +12,20 @@ services:
             - "[2a01:4f8:c2c:4fec::1]:443:443"
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock:ro
-            # - "./traefik_config:/etc/traefik"
             - /traefik/letsencrypt:/letsencrypt
             - /traefik/traefik.log:/var/log/traefik.log
             - /traefik/access.log:/var/log/traefik-access.log
+            - /traefik/traefik.yml:/traefik.yml:ro
+            - /traefik/config.yml:/config.yml:ro
         command:
-            - --api.dashboard=true
-            - --log.level=INFO
-            - --log.filepath=/var/log/traefik.log
             - --accesslog=true
-            - --accesslog.filepath=/var/log/traefik-access.log
-            - --providers.docker.network=proxy
-            - --providers.docker.exposedByDefault=false
-            - --entrypoints.web.address=:80
-            - --entrypoints.web.http.redirections.entrypoint.to=websecure
-            - --entryPoints.web.http.redirections.entrypoint.scheme=https
-            - --entrypoints.websecure.address=:443
-            # - --entrypoints.websecure.asDefault=true
-            - --entrypoints.websecure.http.tls.certresolver=myresolver
-            - --certificatesresolvers.myresolver.acme.caserver=https://acme-v02.api.letsencrypt.org/directory
-            - --certificatesresolvers.myresolver.acme.email=fenris@fenris.xyz
-            - --certificatesresolvers.myresolver.acme.tlschallenge=true
-            - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
         labels:
             - traefik.enable=true
             - traefik.http.routers.mydashboard.rule=Host(`traefik.fenris.xyz`)
             - traefik.http.routers.mydashboard.tls=true
             - traefik.http.routers.mydashboard.tls.certresolver=myresolver
             - traefik.http.routers.mydashboard.service=api@internal
+            # - traefik.http.routers.mydashboard.middlewares=myauth@file
             - traefik.http.routers.mydashboard.middlewares=myauth
             - traefik.http.middlewares.myauth.basicauth.users=fenfen:$$2y$$05$$wzQuCt2h.bxr7r7IoA/Dd.6jus8OTjnEnv73YEX1cY1tpSID5jWTO
         networks:
